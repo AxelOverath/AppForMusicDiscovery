@@ -57,13 +57,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	  <AndroidResource Remove="TestFolder\**" />
+	  <Compile Remove="TestFolder\**" />
+	  <EmbeddedResource Remove="TestFolder\**" />
+	  <MauiCss Remove="TestFolder\**" />
+	  <MauiXaml Remove="TestFolder\**" />
+	  <None Remove="TestFolder\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="TestFolder\" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
 </Project>

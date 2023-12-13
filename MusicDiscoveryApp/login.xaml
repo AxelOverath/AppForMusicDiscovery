@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MusicDiscoveryApp.login"
+             Title="login">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Image Source="company_logo.jpg" HeightRequest="150"/>
+        <VerticalStackLayout>
+            <Label Text="Welkom!" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center"/>
+            <Label Text="Login to your account" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" MaximumHeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20" />
+            </Frame>
+
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <Entry Margin="20,0,0,0" VerticalTextAlignment="Center" Placeholder="User Name" Keyboard="Email"/>
+            </Frame>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -9,7 +9,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Image Source="company_logo.jpg" HeightRequest="150"/>
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="5">
             <Label Text="Welkom!" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center"/>
             <Label Text="Login to your account" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center"/>
         </VerticalStackLayout>
@@ -20,8 +20,26 @@
             </Frame>
 
             <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <Entry Margin="20,0,0,0" VerticalTextAlignment="Center" Placeholder="User Name" Keyboard="Email"/>
+                <Entry Margin="20,0,0,0" TextColor="Black" VerticalTextAlignment="Center" Placeholder="User Name" Keyboard="Email"/>
             </Frame>
         </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" MaximumHeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20" />
+            </Frame>
+
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <Entry Margin="20,0,0,0" TextColor="Black" VerticalTextAlignment="Center" Placeholder="Password" Keyboard="Email"/>
+            </Frame>
+        </StackLayout>
+
+        <Button Text="Login In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" BackgroundColor="#0792ef"/>
+
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+            <Label Text="Don't have account?" TextColor="Gray"/>
+            <Label Text="Sing Up here" TextColor="Blue"/>
+        </StackLayout>
+        
     </VerticalStackLayout>
 </ContentPage>

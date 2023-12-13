@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.NavBarIsVisible="False"
+             xmlns:handlers="clr-namespace:SimpleLoginUI.Handlers"
+             x:Class="MusicDiscoveryApp.Signup">
+
+    <VerticalStackLayout Spacing="25"
+                         Padding="30"
+                         VerticalOptions="Center">
+        <Image Source="dotnet_bot.png" HeightRequest="150" WidthRequest="150" ></Image>
+        <VerticalStackLayout Spacing="5">
+            <Label Text="Welcome!" FontSize="28" HorizontalTextAlignment="Center"/>
+            <Label Text="Sign up to create an account" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Frame HasShadow="true" BorderColor="white" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-20,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <Entry VerticalOptions="Center" Margin="20,0,0,0" Placeholder="Username" Keyboard="Email"/>
+             
+            </Frame>
+        </StackLayout>
+    
+    
+    </VerticalStackLayout>
+</ContentPage>

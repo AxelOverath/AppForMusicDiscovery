@@ -57,11 +57,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="NewFolder1\**" />
 	  <AndroidResource Remove="TestFolder\**" />
+	  <Compile Remove="NewFolder1\**" />
 	  <Compile Remove="TestFolder\**" />
+	  <EmbeddedResource Remove="NewFolder1\**" />
 	  <EmbeddedResource Remove="TestFolder\**" />
+	  <MauiCss Remove="NewFolder1\**" />
 	  <MauiCss Remove="TestFolder\**" />
+	  <MauiXaml Remove="NewFolder1\**" />
 	  <MauiXaml Remove="TestFolder\**" />
+	  <None Remove="NewFolder1\**" />
 	  <None Remove="TestFolder\**" />
 	</ItemGroup>
 
@@ -69,6 +75,12 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Signup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

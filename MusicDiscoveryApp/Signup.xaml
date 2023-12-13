@@ -3,38 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:handlers="clr-namespace:MusicDiscoveryApp.Handlers"
              Shell.NavBarIsVisible="False"
-             x:Class="MusicDiscoveryApp.Signup">
+             x:Class="MusicDiscoveryApp.Signup"
+             BackgroundColor="#ede2b0">
+            
 
     <VerticalStackLayout Spacing="25"
-                         Padding="30"
+                         Padding="20"
                          VerticalOptions="Center">
-        <Image Source="logo.png" HeightRequest="150" WidthRequest="150" />
-        <VerticalStackLayout Spacing="5">
-            <Label Text="Welcome!" FontSize="28" HorizontalTextAlignment="Center"/>
-            <Label Text="Sign up to create an account" HorizontalTextAlignment="Center"/>
+        <Image Source="logo.png" HeightRequest="250" WidthRequest="250" />
+        <VerticalStackLayout Spacing="5" Padding="0,-50,0,40">
+            <Label Text="Welcome!" FontSize="28" HorizontalTextAlignment="Center" TextColor="#236738"/>
+            <Label Text="Sign up to create an account" HorizontalTextAlignment="Center" TextColor="#236738"/>
         </VerticalStackLayout>
         <StackLayout Orientation="Horizontal">
-            <Frame ZIndex="1" HasShadow="true" BorderColor="white" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
                 <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
             </Frame>
-            <Frame Padding="0" Margin="-20,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <handlers:Borderless VerticalOptions="Center" Margin="20,0,0,0" Placeholder="Username" Keyboard="Email"/>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Email" Keyboard="Email" PlaceholderColor="#236738"  TextColor="Black"/>
              
             </Frame>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Frame ZIndex="1" HasShadow="true" BorderColor="white" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="56" WidthRequest="56" CornerRadius="28">
                 <Image Source="lock.png" HeightRequest="20" WidthRequest="20"/>
             </Frame>
-            <Frame Padding="0" Margin="-20,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <handlers:Borderless VerticalOptions="Center" Margin="20,0,0,0" Placeholder="Password" IsPassword="True" Keyboard="Email"/>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Password" IsPassword="True" PlaceholderColor="#236738" TextColor="Black"/>
 
             </Frame>
         </StackLayout>
-        <Button Text="Sign Up" HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="MediumPurple"/>
         <StackLayout Orientation="Horizontal">
-            <Label Text="Already have an account?" TextColor="Gray"/>
-            <Label Text=" Sign in here" TextColor="Blue"/>
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="lock.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Confirm Password" IsPassword="True" PlaceholderColor="#236738" TextColor="Black"/>
+
+            </Frame>
+        </StackLayout>
+        <Button Text="Sign Up" HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Already have an account?" TextColor="Black"/>
+            <Label Text=" Sign in here" TextColor="#2db36d" />
         </StackLayout>
 
     </VerticalStackLayout>

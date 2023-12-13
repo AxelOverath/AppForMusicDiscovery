@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MusicDiscoveryApp.Swipepage"
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout>
+
+        <!-- Horizontale StackLayout voor knoppen en lijn -->
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+
+            <!-- Eerste Button -->
+            <Button
+                Text="For You"
+                Clicked="OnForYouButtonClicked"
+                Pressed="OnButtonPressed"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                TextColor="White" />
+
+            <!-- Lijn (BoxView) tussen de knoppen -->
+            <BoxView
+                WidthRequest="1"
+                HeightRequest="25"
+                BackgroundColor="White" />
+
+            <!-- Tweede Button -->
+            <Button
+                Text="Random"
+                Clicked="OnRandomButtonClicked"
+                Pressed="OnButtonPressed"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                TextColor="White" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

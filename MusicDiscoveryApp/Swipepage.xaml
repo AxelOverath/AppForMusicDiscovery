@@ -2,35 +2,77 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MusicDiscoveryApp.Swipepage"
-             Shell.NavBarIsVisible="False">
-    <VerticalStackLayout>
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#ede2b0">
+    <SwipeView x:Name="swipeView" SwipeChanging="OnSwipeChanging">
+        <SwipeView.LeftItems>
+            <SwipeItems>
+                <SwipeItem Text="✖" BackgroundColor="#ede2b0" Command="{Binding DislikeCommand}"/>
+            </SwipeItems>
+        </SwipeView.LeftItems>
 
-        <!-- Horizontale StackLayout voor knoppen en lijn -->
-        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+        <SwipeView.RightItems>
+            <SwipeItems>
+                <SwipeItem Text="♡" BackgroundColor="#ede2b0" Command="{Binding LikeCommand}" />
+            </SwipeItems>
+        </SwipeView.RightItems>
 
-            <!-- Eerste Button -->
-            <Button
-                Text="For You"
-                Clicked="OnForYouButtonClicked"
-                Pressed="OnButtonPressed"
+        <VerticalStackLayout>
+
+            <!-- Horizontale StackLayout voor knoppen en lijn -->
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+
+                <!-- Eerste Button -->
+                <Button
+                    Text="For You"
+                    x:Name="ForYouButton"
+                    Clicked="OnForYouButtonClicked"
+                    Pressed="OnButtonPressed"
+                    BackgroundColor="Transparent"
+                    BorderColor="Transparent"
+                    TextColor="#236738" 
+                    FontAttributes="Bold"/>
+
+                <!-- Lijn (BoxView) tussen de knoppen -->
+                <BoxView
+                    WidthRequest="1"
+                    HeightRequest="25"
+                    BackgroundColor="#236738" />
+
+                <!-- Tweede Button -->
+                <Button
+                    Text="Random"
+                    x:Name="RandomButton"
+                    Clicked="OnRandomButtonClicked"
+                    Pressed="OnButtonPressed"
+                    BackgroundColor="Transparent"
+                    BorderColor="Transparent"
+                    TextColor="#236738"
+                    FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+
+            <Image
+                Source="https://logos-world.net/wp-content/uploads/2020/09/Spotify-Logo.png"
+                HorizontalOptions="Center"
                 BackgroundColor="Transparent"
-                BorderColor="Transparent"
-                TextColor="White" />
+                WidthRequest="100"/>
 
-            <!-- Lijn (BoxView) tussen de knoppen -->
-            <BoxView
-                WidthRequest="1"
-                HeightRequest="25"
-                BackgroundColor="White" />
+            <!-- Afbeelding onder de knoppen -->
+            <Image
+                Source="https://i.scdn.co/image/ab67616d0000b273a022feadbd7635c6cee11ef9"
+                Aspect="AspectFit"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                Margin="15,0,15,10" />
 
-            <!-- Tweede Button -->
-            <Button
-                Text="Random"
-                Clicked="OnRandomButtonClicked"
-                Pressed="OnButtonPressed"
-                BackgroundColor="Transparent"
-                BorderColor="Transparent"
-                TextColor="White" />
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+            <Label Text="Erop Of Eronder" TextColor="#236738" FontAttributes="Bold" HorizontalOptions="End" Margin="15,5,15,0" FontSize="25"/>
+            <Label Text="Pommelien Thijs" TextColor="#236738" FontAttributes="Bold" Margin="15,5,15,0" FontSize="25"/>
+            <Label Text="Per Ongeluk" TextColor="#236738" FontAttributes="Bold" Margin="15,10,5,0" FontSize="25"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="90" Margin="30">
+                <Button Text="✖" Clicked="OnDislikeButtonClicked" BackgroundColor="Red" TextColor="White" FontFamily="FontAwesome" FontSize="36" CornerRadius="50" WidthRequest="100" HeightRequest="100"/>
+                <Button Text="♡" Clicked="OnLikeButtonClicked" BackgroundColor="Green" TextColor="White" FontFamily="FontAwesome" FontSize="36" CornerRadius="50" WidthRequest="100" HeightRequest="100"/>
+            </StackLayout>
+        </VerticalStackLayout>
+    </SwipeView>
 </ContentPage>

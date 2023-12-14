@@ -20,7 +20,7 @@
             </Frame>
 
             <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <Entry Margin="20,0,0,0" TextColor="Black" VerticalTextAlignment="Center" Placeholder="User Name" Keyboard="Email"/>
+                <Entry x:Name="userInput" Margin="20,0,0,0" TextColor="Black" VerticalTextAlignment="Center" Placeholder="User Name" Keyboard="Email"/>
             </Frame>
         </StackLayout>
 
@@ -30,11 +30,12 @@
             </Frame>
 
             <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <Entry Margin="20,0,0,0" TextColor="Black" VerticalTextAlignment="Center" Placeholder="Password" Keyboard="Email"/>
+                <Entry x:Name="passwordInput" Margin="20,0,0,0" TextColor="Black" VerticalTextAlignment="Center" Placeholder="Password" Keyboard="Email"/>
             </Frame>
         </StackLayout>
 
-        <Button Text="Login In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" BackgroundColor="#0792ef"/>
+        <Button Clicked="SignIn" x:Name="signinButton" Text="Login In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" BackgroundColor="#0792ef"/>
+        <Label x:Name="TestLabel" />
 
         <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
             <Label Text="Don't have account?" TextColor="Gray"/>

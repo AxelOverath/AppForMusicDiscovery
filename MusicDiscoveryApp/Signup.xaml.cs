@@ -6,4 +6,8 @@ public partial class Signup : ContentPage
 	{
 		InitializeComponent();
 	}
+    public async void GoToMainPage_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new RegisterInfo());
+    }
 }

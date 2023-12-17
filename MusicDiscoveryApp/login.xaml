@@ -39,7 +39,7 @@
 
         <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
             <Label Text="Don't have account?" TextColor="Black"/>
-            <Label Text="Sing Up here" TextColor="#2db36d"/>
+            <Button Text="Sign Up" Clicked="GoToMainPage_Clicked" HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d" />
         </StackLayout>
         
     </VerticalStackLayout>

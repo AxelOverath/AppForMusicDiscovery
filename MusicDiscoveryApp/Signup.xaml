@@ -5,7 +5,7 @@
              Shell.NavBarIsVisible="False"
              x:Class="MusicDiscoveryApp.Signup"
              BackgroundColor="#ede2b0">
-            
+
 
     <VerticalStackLayout Spacing="25"
                          Padding="20"
@@ -42,10 +42,12 @@
 
             </Frame>
         </StackLayout>
-        <Button Text="Sign Up" HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d"/>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Already have an account?" TextColor="Black"/>
-            <Label Text=" Sign in here" TextColor="#2db36d" />
+        <Button Text="Sign Up" HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="Already have an account?" TextColor="Black"  />
+
+            <Button Text="Login" Clicked="GoToMainPage_Clicked" BackgroundColor="Transparent" Margin="-5,-13,0,0" HorizontalOptions="Center" TextColor="#236738" />
+
         </StackLayout>
 
     </VerticalStackLayout>

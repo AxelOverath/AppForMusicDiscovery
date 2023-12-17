@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MusicDiscoveryApp.RegisterInfo"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:handlers="clr-namespace:MusicDiscoveryApp.Handlers"
+             Shell.NavBarIsVisible="False"
+              BackgroundColor="#ede2b0"
+             Title="RegisterInfo">
+    <VerticalStackLayout Spacing="25"
+                     Padding="20"
+                     VerticalOptions="Center">
+        <VerticalStackLayout Spacing="5" Padding="0,-50,0,40">
+            <Label Text="Additional Questions" FontSize="28" HorizontalTextAlignment="Center" TextColor="#236738"/>
+        </VerticalStackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Firstname"  PlaceholderColor="#236738"  TextColor="Black"/>
+
+            </Frame>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Lastname"  PlaceholderColor="#236738"  TextColor="Black"/>
+            </Frame>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Username"  PlaceholderColor="#236738"  TextColor="Black"/>
+            </Frame>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="calendar.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <Label Text="Data Of Birth:" TextColor="#236738" Margin="40,0,0,0" VerticalOptions="Center"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <DatePicker FontSize="15" VerticalOptions="Center" TextColor="#236738"/>
+            </Frame>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <Picker x:Name="languagePicker" Title="Select Language" TextColor="#236738">
+                    <Picker.ItemsSource>
+                        <x:String>Text</x:String>
+                        <x:String>Spanish</x:String>
+                        
+                    </Picker.ItemsSource>
+                </Picker>
+            </Frame>
+        </StackLayout>
+        <Button Text="Confirm" HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+        </StackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

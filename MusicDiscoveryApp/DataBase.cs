@@ -20,18 +20,12 @@ namespace MusicDiscoveryApp
             var client = new MongoClient(settings);
             var db = client.GetDatabase(databaseName);
             collection = db.GetCollection<User>(collectionName);
+            System.Diagnostics.Debug.WriteLine("Connection established.");
         }
 
         public static IMongoCollection<User> UsersCollection
         {
             get { return collection; }
-        }
-
-        public static async Task<bool> IsUserExistsAsync(string username)
-        {
-            var filter = Builders<User>.Filter.Eq(u => u.Name, username);
-            var result = await collection.Find(filter).FirstOrDefaultAsync();
-            return result != null;
         }
 
         public static async Task InsertUserAsync(User user)

@@ -14,8 +14,8 @@ public partial class Signup : ContentPage
     }
     public async void GoToRegisterInfo_Clicked(object sender, EventArgs e)
     {
-        string email = EmailEntry.ToString();
-        string password = PasswordEntry.ToString();
+        string email = EmailEntry.Text;
+        string password = PasswordEntry.Text;
 
         // Check if the user already exists
         if (await Database.IsUserExistsAsync(email))

@@ -96,6 +96,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+
     <MauiXaml Update="Settings.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
@@ -110,6 +111,7 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="TabBar.xaml">
+
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

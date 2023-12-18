@@ -1,15 +1,14 @@
+
 namespace MusicDiscoveryApp;
 
 public partial class login : ContentPage
 {
-
-	private string user;
-	private string password;
 	public login()
 	{
 		InitializeComponent();
 
 	}
+
 
 	void SignIn(object sender, EventArgs e)
 	{
@@ -30,4 +29,9 @@ public partial class login : ContentPage
 	{
 		await Shell.Current.GoToAsync(nameof(ForgetPassword));
 	}
+ public async void GoToSignup_Clicke(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Signup());
+    }
+
 }

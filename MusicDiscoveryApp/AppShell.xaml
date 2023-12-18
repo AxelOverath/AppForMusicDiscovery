@@ -8,8 +8,10 @@
     Title="MusicDiscoveryApp">
 
     <ShellContent
-        Title="Home"
+
+        Title="Login"
         ContentTemplate="{DataTemplate local:login}"
-        Route="MainPage" />
+        Route="LoginPage" />
+
 
 </Shell>

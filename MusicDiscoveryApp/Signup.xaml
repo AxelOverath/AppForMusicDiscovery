@@ -42,11 +42,11 @@
 
             </Frame>
         </StackLayout>
-        <Button Text="Sign Up" HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d" />
+        <Button Text="Sign In" Clicked="GoToRegisterInfo_Clicked" HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d" />
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <Label Text="Already have an account?" TextColor="Black"  />
 
-            <Button Text="Login" Clicked="GoToMainPage_Clicked" BackgroundColor="Transparent" Margin="-5,-13,0,0" HorizontalOptions="Center" TextColor="#236738" />
+            <Button Text="Login" Clicked="GoToLogin_Clicked" BackgroundColor="Transparent" Margin="-5,-13,0,0" HorizontalOptions="Center" TextColor="#236738" />
 
         </StackLayout>
 

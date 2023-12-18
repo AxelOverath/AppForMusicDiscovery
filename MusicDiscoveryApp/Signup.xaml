@@ -17,7 +17,7 @@
         </VerticalStackLayout>
         <StackLayout Orientation="Horizontal">
             <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
-                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+                <Image Source="user.png" x:Name="EmailEntry" HeightRequest="20" WidthRequest="20"/>
             </Frame>
             <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
                 <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Email" Keyboard="Email" PlaceholderColor="#236738"  TextColor="Black"/>
@@ -38,7 +38,7 @@
                 <Image Source="lock.png" HeightRequest="20" WidthRequest="20"/>
             </Frame>
             <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Confirm Password" IsPassword="True" PlaceholderColor="#236738" TextColor="Black"/>
+                <handlers:Borderless x:Name="PasswordEntry" VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Confirm Password" IsPassword="True" PlaceholderColor="#236738" TextColor="Black"/>
 
             </Frame>
         </StackLayout>

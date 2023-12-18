@@ -89,6 +89,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="ForgetPassword.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -16,7 +16,17 @@ public partial class login : ContentPage
 		user = userInput.Text;
 		password = passwordInput.Text;
 
-		TestLabel.Text = user;
+		if (user != "Henrique3040" && password != "050205") {
+
+            TestLabel.Text = "Forget password?";
+
+        }
+
 
     }
+
+	async void GoToForgetPassword(object sender, EventArgs e)
+	{
+		await Shell.Current.GoToAsync(nameof(ForgetPassword));
+	}
 }

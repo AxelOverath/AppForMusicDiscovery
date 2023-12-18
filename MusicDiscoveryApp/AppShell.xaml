@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:AppShell}"
+        ContentTemplate="{DataTemplate local:login}"
         Route="MainPage" />
 
 </Shell>

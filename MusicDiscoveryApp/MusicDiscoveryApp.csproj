@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+
 	  <AndroidResource Remove="Login\**" />
 	  <AndroidResource Remove="TestFolder\**" />
 	  <Compile Remove="Login\**" />
@@ -68,6 +69,7 @@
 	  <MauiXaml Remove="Login\**" />
 	  <MauiXaml Remove="TestFolder\**" />
 	  <None Remove="Login\**" />
+
 	  <None Remove="TestFolder\**" />
 	</ItemGroup>
 

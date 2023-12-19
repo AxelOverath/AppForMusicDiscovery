@@ -81,6 +81,7 @@
 	  <None Remove="Resources\Images\lock.png" />
 	  <None Remove="Resources\Images\more_icon.png" />
 	  <None Remove="Resources\Images\team.png" />
+	  <None Remove="Resources\Images\tyler_the_creator.jpg" />
 	  <None Remove="Resources\Images\user.png" />
 	</ItemGroup>
 
@@ -111,6 +112,9 @@
 	  </MauiXaml>
 	  <MauiXaml Update="TabBar.xaml">
 
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="TempLiabrary.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

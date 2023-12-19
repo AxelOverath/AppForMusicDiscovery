@@ -97,7 +97,8 @@
 
 	<ItemGroup>
 
-    <MauiXaml Update="Settings.xaml">
+    <MauiXaml Update="SpotifyConnect.xaml">
+
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="Swipepage.xaml" />

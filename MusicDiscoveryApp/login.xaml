@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MusicDiscoveryApp.login"
              Title="login"
+             Shell.NavBarIsVisible="False"
              BackgroundColor="#ede2b0">
     <VerticalStackLayout Spacing="25"
                          Padding="20"
@@ -13,6 +14,8 @@
             <Label Text="Welkom!" FontSize="28" TextColor="#236738" HorizontalTextAlignment="Center"/>
             <Label Text="Login to your account" FontSize="18" TextColor="#236738" HorizontalTextAlignment="Center"/>
         </VerticalStackLayout>
+
+
 
         <StackLayout Orientation="Horizontal">
             <Frame ZIndex="1" HasShadow="True" BorderColor="#288d52" MaximumHeightRequest="58" WidthRequest="58" CornerRadius="28">
@@ -34,13 +37,14 @@
             </Frame>
         </StackLayout>
 
-        <Button Clicked="SignIn" x:Name="signinButton" Text="Login In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" BackgroundColor="#2db36d"/>
-        <Label x:Name="TestLabel" />
+
+        <Button Clicked="GoToForgetPassword" x:Name="TestLabel" TextColor="Black" HeightRequest="50" WidthRequest="150" HorizontalOptions="Center" CornerRadius="20" BackgroundColor="#ede2b0"/>
+        <Button Clicked="SignIn" x:Name="signinButton" Text="Login" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" BackgroundColor="#2db36d"/>
 
         <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
             <Label Text="Don't have account?" TextColor="Black"/>
-            <Button Text="Sign Up" Clicked="GoToMainPage_Clicked" HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d" />
+            <Button Text="Sign Up" Clicked="GoToSignup_Clicke" BackgroundColor="Transparent" Margin="-5,-13,0,0" HorizontalOptions="Center" TextColor="#236738"/>
         </StackLayout>
-        
+
     </VerticalStackLayout>
 </ContentPage>

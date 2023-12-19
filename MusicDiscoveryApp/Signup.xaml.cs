@@ -1,12 +1,19 @@
+using MongoDB.Driver;
+using System.Net.Mail;
+
 namespace MusicDiscoveryApp;
 
 public partial class Signup : ContentPage
 {
-	public Signup()
-	{
-		InitializeComponent();
-	}
-    public async void GoToMainPage_Clicked(object sender, EventArgs e)
+    public Signup()
+    {
+        InitializeComponent();
+    }
+    public async void GoToLogin_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new login());
+    }
+    public async void GoToRegisterInfo_Clicked(object sender, EventArgs e)
     {
         string email = EmailEntry.Text;
         string password = PasswordEntry.Text;
@@ -16,7 +23,8 @@ public partial class Signup : ContentPage
         {
             ErrorLabel.Text = "This is not a valid email!";
             return;
-        } else ErrorLabel.Text = string.Empty;
+        }
+        else ErrorLabel.Text = string.Empty;
 
         if (password != null && confirmPassword != null)
         {
@@ -27,13 +35,15 @@ public partial class Signup : ContentPage
             }
             else ErrorLabel.Text = string.Empty;
         }
-        else return;
+
+        else ErrorLabel.Text = string.Empty;
 
         if (confirmPassword != password)
         {
             ErrorLabel.Text = "Passwords do not match!";
             return;
-        } else ErrorLabel.Text = string.Empty;
+        }
+        else ErrorLabel.Text = string.Empty;
 
         // Check if the user already exists in the database
         var existingUser = await CheckIfUserExists(email);
@@ -49,5 +59,26 @@ public partial class Signup : ContentPage
 
         // Optionally, you can navigate to the next page or display a success message
         await Navigation.PushAsync(new RegisterInfo());
+    }
+
+    // Helper method to validate email format
+    private bool IsValidEmail(string email)
+    {
+        try
+        {
+            var mailAddress = new MailAddress(email);
+            return mailAddress.Address == email;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private async Task<User> CheckIfUserExists(string email)
+    {
+        var filter = Builders<User>.Filter.Eq(u => u.Email, email);
+        var existingUser = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
+        return existingUser;
     }
 }

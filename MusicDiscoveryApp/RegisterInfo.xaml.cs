@@ -6,4 +6,8 @@ public partial class RegisterInfo : ContentPage
 	{
 		InitializeComponent();
 	}
+    public async void GoToSwipePage_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Swipepage());
+    }
 }

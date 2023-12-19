@@ -21,6 +21,7 @@ public partial class Signup : ContentPage
 
         if (!IsValidEmail(email))
         {
+
             ErrorLabel.Text = "This is not a valid email!";
             return;
         }
@@ -45,11 +46,14 @@ public partial class Signup : ContentPage
         }
         else ErrorLabel.Text = string.Empty;
 
+
         // Check if the user already exists in the database
         var existingUser = await CheckIfUserExists(email);
         if (existingUser != null)
         {
+
             ErrorLabel.Text = "This email is already registered!";
+
             return;
         }
 

@@ -1,9 +1,17 @@
 ﻿using MongoDB.Driver;
 using MusicDiscoveryApp;
 
-const string connectionString = "mongodb+srv://caelanstraus:PASSWORD@harmonyhuntcluster.lntmq6w.mongodb.net/?retryWrites=true&w=majority";
-var settings = MongoClientSettings.FromConnectionString(connectionString);
-settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+namespace MusicDiscoveryApp
+{
+    internal class Database
+    {
+        private static IMongoCollection<User> collection;
+
+        static Database()
+        {
+            const string connectionUri = "mongodb://caelanstraus:PASSWORD@ac-rg0cquc-shard-00-00.lntmq6w.mongodb.net:27017,ac-rg0cquc-shard-00-01.lntmq6w.mongodb.net:27017,ac-rg0cquc-shard-00-02.lntmq6w.mongodb.net:27017/?ssl=true&replicaSet=atlas-dkat5c-shard-0&authSource=admin&retryWrites=true&w=majority";
+            var settings = MongoClientSettings.FromConnectionString(connectionUri);
+            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
 
 string databaseName = "HormonyHuntDB";
 string collectionName = "users";

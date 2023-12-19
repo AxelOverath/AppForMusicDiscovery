@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using MusicDiscoveryApp;
+using System.Threading.Tasks;
 
 namespace MusicDiscoveryApp
 {
@@ -9,24 +9,28 @@ namespace MusicDiscoveryApp
 
         static Database()
         {
+            // Move the database setup logic to a static constructor
             const string connectionUri = "mongodb://caelanstraus:PASSWORD@ac-rg0cquc-shard-00-00.lntmq6w.mongodb.net:27017,ac-rg0cquc-shard-00-01.lntmq6w.mongodb.net:27017,ac-rg0cquc-shard-00-02.lntmq6w.mongodb.net:27017/?ssl=true&replicaSet=atlas-dkat5c-shard-0&authSource=admin&retryWrites=true&w=majority";
             var settings = MongoClientSettings.FromConnectionString(connectionUri);
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
 
-string databaseName = "HormonyHuntDB";
-string collectionName = "users";
+            string databaseName = "HormonyHDB";
+            string collectionName = "users";
 
-var client = new MongoClient(settings);
-var db = client.GetDatabase(databaseName);
-var collection = db.GetCollection<User>(collectionName);
+            var client = new MongoClient(settings);
+            var db = client.GetDatabase(databaseName);
+            collection = db.GetCollection<User>(collectionName);
+            System.Diagnostics.Debug.WriteLine("Connection established.");
+        }
 
-var user = new User { Name = "Jefke", Password = "PASSWORD123" };
+        public static IMongoCollection<User> UsersCollection
+        {
+            get { return collection; }
+        }
 
-await collection.InsertOneAsync(user);
-
-var results = await collection.FindAsync(_ => true);
-
-foreach (var result in results.ToList())
-{
-    Console.WriteLine($"{result.Name} {result.Password}");
+        public static async Task InsertUserAsync(User user)
+        {
+            await collection.InsertOneAsync(user);
+        }
+    }
 }

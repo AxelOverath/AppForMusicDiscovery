@@ -10,7 +10,7 @@
     <ShellContent
 
         Title="Sign up"
-        ContentTemplate="{DataTemplate local:SpotifyConnect}"
+        ContentTemplate="{DataTemplate local:RegisterInfo}"
         Route="SignUpPage" />
 
 

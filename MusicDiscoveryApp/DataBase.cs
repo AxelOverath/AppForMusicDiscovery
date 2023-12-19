@@ -7,6 +7,7 @@ namespace MusicDiscoveryApp
     {
         private static IMongoCollection<User> collection;
 
+
         static Database()
         {
             // Move the database setup logic to a static constructor

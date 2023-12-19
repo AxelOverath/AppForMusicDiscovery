@@ -21,27 +21,36 @@ public partial class Signup : ContentPage
 
         if (!IsValidEmail(email))
         {
-            EmailErrorLabel.Text = "This is not a valid email!";
-            return;
-        } else EmailErrorLabel.Text = string.Empty;
 
-        if (!password.Any(char.IsUpper) || !password.Any(char.IsDigit))
-        {
-            PasswordErrorLabel.Text = "Password must contain at least 1 uppercase letter and 1 number!";
+            ErrorLabel.Text = "This is not a valid email!";
             return;
-        } else PasswordErrorLabel.Text = string.Empty;
+        } else ErrorLabel.Text = string.Empty;
+
+        if (password != null && confirmPassword != null)
+        {
+            if (!password.Any(char.IsUpper) || !password.Any(char.IsDigit))
+            {
+                ErrorLabel.Text = "Password must contain at least 1 uppercase letter and 1 number!";
+                return;
+            }
+            else ErrorLabel.Text = string.Empty;
+        }
+        else return;
 
         if (confirmPassword != password)
         {
-            PasswordErrorLabel2.Text = "Passwords do not match!";
+            ErrorLabel.Text = "Passwords do not match!";
             return;
-        } else PasswordErrorLabel2.Text = string.Empty;
+        } else ErrorLabel.Text = string.Empty;
+
 
         // Check if the user already exists in the database
         var existingUser = await CheckIfUserExists(email);
         if (existingUser != null)
         {
-            EmailErrorLabel.Text = "This email is already registered!";
+
+            ErrorLabel.Text = "This email is already registered!";
+
             return;
         }
 

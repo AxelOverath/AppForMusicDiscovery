@@ -1,31 +1,68 @@
+using MongoDB.Driver;
+
 namespace MusicDiscoveryApp;
 
-public partial class login : ContentPage
+public partial class Login : ContentPage
 {
-    public login()
+    public Login()
     {
         InitializeComponent();
     }
 
-    void SignIn(object sender, EventArgs e)
+    public async void SignIn(object sender, EventArgs e)
     {
-        string user = userInput.Text;
+        string identifier = identifierInput.Text;
         string password = passwordInput.Text;
 
-        //hier moet een controller gebeuren om te zien of user in de database bestaat en password klopt
-        if (user != "" && password != "")
+        if (identifier == null || password == null)
         {
-            TestLabel.Text = "Forget password?";
+            forgotPasswordLabel.Text = "Please enter both email/username and password!";
+            return;
         }
+
+        var existingUser = await CheckIfUserExists(identifier);
+
+        if (existingUser != null && BCrypt.Net.BCrypt.Verify(password, existingUser.Password))
+        {
+            if (AnyUserInfoIsNull(existingUser))
+            {
+                forgotPasswordLabel.Text = "Some user information is missing. Redirecting to complete registration.";
+                await Navigation.PushAsync(new RegisterInfo(existingUser.Email));
+            }
+            else
+            {
+                forgotPasswordLabel.Text = "Login Successful!";
+                await Navigation.PushAsync(new Swipepage());
+            }
+        }
+        else
+        {
+            forgotPasswordLabel.Text = "Incorrect email/username or password!";
+        }
+    }
+
+    private async Task<User> CheckIfUserExists(string identifier)
+    {
+        var filter = Builders<User>.Filter.Where(u => u.Email == identifier || u.Username == identifier);
+        var existingUser = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
+        return existingUser;
+    }
+
+    private bool AnyUserInfoIsNull(User user)
+    {
+        // Check for null values in user information
+        return string.IsNullOrEmpty(user.FirstName)
+            || string.IsNullOrEmpty(user.LastName)
+            || string.IsNullOrEmpty(user.Username)
+            || user.DateOfBirth == default(DateTime);
     }
 
     async void GoToForgetPassword(object sender, EventArgs e)
     {
-        //await Shell.Current.GoToAsync(nameof(ForgetPassword));
+        await Navigation.PushAsync(new ForgetPassword());
     }
     public async void GoToSignup_Clicke(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Signup());
     }
-
 }

@@ -18,8 +18,7 @@
                 <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
             </Frame>
             <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Firstname"  PlaceholderColor="#236738"  TextColor="Black"/>
-
+                <handlers:Borderless x:Name="firstNameEntry" VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Firstname"  PlaceholderColor="#236738"  TextColor="Black"/>
             </Frame>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
@@ -27,7 +26,7 @@
                 <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
             </Frame>
             <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Lastname"  PlaceholderColor="#236738"  TextColor="Black"/>
+                <handlers:Borderless x:Name="lastNameEntry" VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Lastname"  PlaceholderColor="#236738"  TextColor="Black"/>
             </Frame>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
@@ -35,7 +34,7 @@
                 <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
             </Frame>
             <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <handlers:Borderless VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Username"  PlaceholderColor="#236738"  TextColor="Black"/>
+                <handlers:Borderless x:Name="usernameEntry" VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Username"  PlaceholderColor="#236738"  TextColor="Black"/>
             </Frame>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
@@ -46,21 +45,7 @@
                 <Label Text="Data Of Birth:" TextColor="#236738" Margin="40,0,0,0" VerticalOptions="Center"/>
             </Frame>
             <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <DatePicker FontSize="15" VerticalOptions="Center" TextColor="#236738"/>
-            </Frame>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
-                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
-            </Frame>
-            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                <Picker x:Name="languagePicker" Title="Select Language" TextColor="#236738">
-                    <Picker.ItemsSource>
-                        <x:String>Text</x:String>
-                        <x:String>Spanish</x:String>
-                        
-                    </Picker.ItemsSource>
-                </Picker>
+                <DatePicker x:Name="DOBEntry" FontSize="15" VerticalOptions="Center" TextColor="#236738"/>
             </Frame>
         </StackLayout>
         <Button Text="Confirm" Clicked="GoToSwipePage_Clicked"  HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d"/>

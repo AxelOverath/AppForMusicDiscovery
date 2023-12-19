@@ -6,7 +6,6 @@
              x:Class="MusicDiscoveryApp.Signup"
              BackgroundColor="#ede2b0">
 
-
     <ScrollView>
         <VerticalStackLayout Spacing="25"
                              Padding="20"
@@ -23,7 +22,6 @@
                 </Frame>
                 <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
                     <handlers:Borderless VerticalOptions="Center" x:Name = "EmailEntry" Margin="40,0,0,0" Placeholder="Email" Keyboard="Email" PlaceholderColor="#236738"  TextColor="Black"/>
-             
                 </Frame>
             </StackLayout>
             <StackLayout Orientation="Horizontal">

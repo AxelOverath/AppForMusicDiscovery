@@ -10,8 +10,7 @@
     <ShellContent
 
         Title="Login"
-        ContentTemplate="{DataTemplate local:Signup}"
+        ContentTemplate="{DataTemplate local:Login}"
         Route="LoginPage" />
-
 
 </Shell>

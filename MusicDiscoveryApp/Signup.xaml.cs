@@ -1,30 +1,32 @@
 using MongoDB.Driver;
 using System.Net.Mail;
+using BCrypt.Net;
 
 namespace MusicDiscoveryApp;
 
 public partial class Signup : ContentPage
 {
-	public Signup()
-	{
-		InitializeComponent();
-	}
+    public Signup()
+    {
+        InitializeComponent();
+    }
     public async void GoToLogin_Clicked(object sender, EventArgs e)
     {
-        //await Navigation.PushAsync(new login());
+        await Navigation.PushAsync(new Login());
     }
     public async void GoToRegisterInfo_Clicked(object sender, EventArgs e)
     {
         string email = EmailEntry.Text;
         string password = PasswordEntry.Text;
+        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
         string confirmPassword = PasswordConfirm.Text;
 
         if (!IsValidEmail(email))
         {
-
             ErrorLabel.Text = "This is not a valid email!";
             return;
-        } else ErrorLabel.Text = string.Empty;
+        }
+        else ErrorLabel.Text = string.Empty;
 
         if (password != null && confirmPassword != null)
         {
@@ -35,34 +37,32 @@ public partial class Signup : ContentPage
             }
             else ErrorLabel.Text = string.Empty;
         }
-        else return;
+
+        else ErrorLabel.Text = string.Empty;
 
         if (confirmPassword != password)
         {
             ErrorLabel.Text = "Passwords do not match!";
             return;
-        } else ErrorLabel.Text = string.Empty;
+        }
+        else ErrorLabel.Text = string.Empty;
 
 
         // Check if the user already exists in the database
         var existingUser = await CheckIfUserExists(email);
         if (existingUser != null)
         {
-
             ErrorLabel.Text = "This email is already registered!";
-
             return;
         }
 
         // If the user doesn't exist, you can now proceed to insert the user into the database
-        var newUser = new User { Email = email, Password = password };
-        await Database.UsersCollection.InsertOneAsync(newUser);
+        await Database.UsersCollection.InsertOneAsync(new User { Email = email, Password = hashedPassword});
 
-        // Optionally, you can navigate to the next page or display a success message
-        await Navigation.PushAsync(new RegisterInfo());
+        // Pass the user's email to RegisterInfo
+        await Navigation.PushAsync(new RegisterInfo(email));
     }
 
-    // Helper method to validate email format
     private bool IsValidEmail(string email)
     {
         try

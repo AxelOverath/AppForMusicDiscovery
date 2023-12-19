@@ -96,16 +96,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+
     <MauiXaml Update="SpotifyConnect.xaml">
+
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="Swipepage.xaml" />
-    <MauiXaml Update="login.xaml" />
 	  <MauiXaml Update="RegisterInfo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Signup.xaml">
 
+
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="TabBar.xaml">
 
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

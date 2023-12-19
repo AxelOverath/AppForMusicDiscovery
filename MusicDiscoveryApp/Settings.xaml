@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MusicDiscoveryApp.Settings"
+             Title="Settings"
+             BackgroundColor="#ede2b0"
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout Padding="100">
+        <VerticalStackLayout VerticalOptions="Start" >
+            <Image Source="user.png" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+        <VerticalStackLayout VerticalOptions="Center" Padding="200" >
+            <Button Text="Settings" HorizontalOptions="Center" CornerRadius="20" FontSize="30" WidthRequest="200" BackgroundColor="#2db36d" />
+        </VerticalStackLayout>
+        <VerticalStackLayout  Padding="-50" VerticalOptions="Center" >
+            
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+    
+</ContentPage>

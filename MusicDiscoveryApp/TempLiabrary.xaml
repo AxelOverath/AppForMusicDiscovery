@@ -4,11 +4,56 @@
              x:Class="MusicDiscoveryApp.TempLiabrary"
              Title="TempLiabrary"
              BackgroundColor="#ede2b0">
-    <VerticalStackLayout >
 
-        <HorizontalStackLayout VerticalOptions="Center">
-            <Image Source="tyler_the_creator.jpg"  HeightRequest="150" WidthRequest="150"/>
+   
+
+    <VerticalStackLayout Padding="20" HorizontalOptions="Start" >
+
+        <HorizontalStackLayout Spacing="2" >
+
+
+            <VerticalStackLayout Padding="10,10,10,10"  WidthRequest="170" HeightRequest="300"   BackgroundColor="#2db36d">
+
+                <VerticalStackLayout>
+                    <Image  Source="https://i.imgur.com/t3tWwVE.png" WidthRequest="125"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout VerticalOptions="Center">
+
+                    <Image x:Name="album" Source="pommelien.jpeg"  HeightRequest="135" WidthRequest="130"  />
+
+                    <VerticalStackLayout Spacing="10" Padding="15,0,0,0" >
+                        <Label x:Name="songName" Text="Title:" />
+                        <Label x:Name="artist" VerticalOptions="End" Text="artist:" />
+                        <Label x:Name="playlist" Text="Playlist:"/>
+                        <Label x:Name="album" Text="Album:"/>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+
+            <VerticalStackLayout Padding="10,10,10,10"  WidthRequest="170" HeightRequest="300"   BackgroundColor="#2db36d">
+
+                <VerticalStackLayout>
+                    <Image Source="https://i.imgur.com/t3tWwVE.png" WidthRequest="125"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout VerticalOptions="Center">
+
+                    <Image Source="tyler_the_creator.jpg"  HeightRequest="135" WidthRequest="130"  />
+
+                    <VerticalStackLayout Spacing="10" Padding="15,0,0,0" >
+                        <Label x:Name="songName2" Text="Title:" />
+                        <Label x:Name="artist2" VerticalOptions="End" Text="artist:" />
+                        <Label x:Name="playlist2" Text="Playlist:"/>
+                        <Label x:Name="album2" Text="Album:"/>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </VerticalStackLayout>
         </HorizontalStackLayout>
         
+        
+
+
     </VerticalStackLayout>
 </ContentPage>

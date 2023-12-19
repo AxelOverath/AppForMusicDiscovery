@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-/*
+using MusicDiscoveryApp.ApiCalls;
 using Newtonsoft.Json;
 
-class Program
+class Apicalls
 {
     static async Task Main()
     {

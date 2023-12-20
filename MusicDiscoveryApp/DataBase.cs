@@ -1,5 +1,4 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
 namespace MusicDiscoveryApp
 {
@@ -17,17 +16,6 @@ namespace MusicDiscoveryApp
             string collectionName = "users";
              
             var client = new MongoClient(settings);
-
-            try
-            {
-                var result = client.GetDatabase("Test").RunCommand<BsonDocument>(new BsonDocument("ping", 1));
-                Console.WriteLine("Pinged your deployment. You successfully connected to MongoDB!");
-                System.Diagnostics.Debug.WriteLine("Pinged your deployment. You successfully connected to MongoDB!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
             var db = client.GetDatabase(databaseName);
             collection = db.GetCollection<User>(collectionName);
         }

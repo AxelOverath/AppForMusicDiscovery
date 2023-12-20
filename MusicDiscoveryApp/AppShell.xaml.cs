@@ -12,6 +12,5 @@
         {
             await Navigation.PushAsync(new Login());
         }
-
     }
 }

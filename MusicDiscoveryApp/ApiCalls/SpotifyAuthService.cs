@@ -1,4 +1,4 @@
-﻿using Amazon.SecurityToken.Model;
+/*using Amazon.SecurityToken.Model;
 using MongoDB.Bson.Serialization.Serializers;
 //using MusicDiscoveryApp.ApiCalls;
 //using Security;
@@ -60,6 +60,4 @@ public class SpotifyAuthService
         Console.WriteLine($"Aborting authorization, error received: {error}");
         await _server.Stop();
     }
-
-}
-*/
+}*/

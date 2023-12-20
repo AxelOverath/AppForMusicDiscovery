@@ -17,8 +17,7 @@ public partial class Login : ContentPage
 
         if (identifier == null || password == null)
         {
-            forgotPasswordLabel.Text = "Please enter both email/username and password!";
-            return;
+            await DisplayAlert("Error", "Please enter both email and password.", "OK"); return;
         }
 
         var existingUser = await CheckIfUserExists(identifier);
@@ -27,24 +26,25 @@ public partial class Login : ContentPage
         {
             if (AnyUserInfoIsNull(existingUser))
             {
-                forgotPasswordLabel.Text = "Some user information is missing. Redirecting to complete registration.";
-                await Navigation.PushAsync(new RegisterInfo(existingUser.Email));
+                await Navigation.PushAsync(new RegisterInfo());
             }
             else
             {
-                forgotPasswordLabel.Text = "Login Successful!";
+                UserStorage.storedUsername = existingUser.Username;
+                UserStorage.storedEmail = existingUser.Email;
                 await Navigation.PushAsync(new Swipepage());
             }
         }
         else
         {
-            forgotPasswordLabel.Text = "Incorrect email/username or password!";
+            await DisplayAlert("Error", "Email or password is wrong", "OK");
+            return;
         }
     }
 
     private async Task<User> CheckIfUserExists(string identifier)
     {
-        var filter = Builders<User>.Filter.Where(u => u.Email == identifier || u.Username == identifier);
+        var filter = Builders<User>.Filter.Where(u => u.Email == identifier);
         var existingUser = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
         return existingUser;
     }
@@ -55,7 +55,7 @@ public partial class Login : ContentPage
         return string.IsNullOrEmpty(user.FirstName)
             || string.IsNullOrEmpty(user.LastName)
             || string.IsNullOrEmpty(user.Username)
-            || user.DateOfBirth == default(DateTime);
+            || user.DateOfBirth == default;
     }
 
     async void GoToForgetPassword(object sender, EventArgs e)

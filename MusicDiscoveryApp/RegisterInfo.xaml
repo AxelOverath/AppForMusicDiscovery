@@ -4,8 +4,8 @@
              x:Class="MusicDiscoveryApp.RegisterInfo"
              xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              xmlns:handlers="clr-namespace:MusicDiscoveryApp.Handlers"
+             BackgroundColor="#ede2b0"
              Shell.NavBarIsVisible="False"
-              BackgroundColor="#ede2b0"
              Title="RegisterInfo">
     <VerticalStackLayout Spacing="25"
                      Padding="20"

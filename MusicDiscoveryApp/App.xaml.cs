@@ -1,4 +1,4 @@
-﻿using Microsoft.Maui.Platform;
+using Microsoft.Maui.Platform;
 using MusicDiscoveryApp.Handlers;
 using SpotifyAPI.Web;
 
@@ -24,8 +24,8 @@ namespace MusicDiscoveryApp
 
             MainPage = new AppShell();
 
- //           var authService = new SpotifyAuthService();
-//            var accessToken = await authService.Authenticate();
+        /*    var authService = new SpotifyAuthService();
+            var accessToken = await authService.Authenticate();
 
  //           if (!string.IsNullOrEmpty(accessToken))
             {
@@ -34,7 +34,7 @@ namespace MusicDiscoveryApp
             }
 
 
-
+            */
         }
     }
 }

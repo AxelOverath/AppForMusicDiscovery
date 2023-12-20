@@ -47,7 +47,6 @@
 
                 <Button Text="Login" Clicked="GoToLogin_Clicked" BackgroundColor="Transparent" Margin="-5,-13,0,0" HorizontalOptions="Center" TextColor="#236738" />
 
-
             </StackLayout>
 
         </VerticalStackLayout>

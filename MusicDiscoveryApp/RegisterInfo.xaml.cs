@@ -16,6 +16,7 @@ namespace MusicDiscoveryApp
         public RegisterInfo(string email)
         {
             InitializeComponent();
+            Shell.SetTabBarIsVisible(this, false);
             // Populate the Picker with country names
             PopulateCountryPicker();
             DOBEntry.Date = new DateTime(2000, 1, 1);

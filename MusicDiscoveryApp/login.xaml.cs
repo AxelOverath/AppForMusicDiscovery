@@ -7,6 +7,7 @@ public partial class Login : ContentPage
     public Login()
     {
         InitializeComponent();
+        Shell.SetTabBarIsVisible(this, false);
     }
 
     public async void SignIn(object sender, EventArgs e)

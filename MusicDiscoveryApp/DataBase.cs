@@ -9,7 +9,7 @@ namespace MusicDiscoveryApp
 
         static Database()
         {
-            const string connectionUri = "mongodb://caelanstraus:PASS@ac-q6o5f9r-shard-00-00.laimuxx.mongodb.net:27017,ac-q6o5f9r-shard-00-01.laimuxx.mongodb.net:27017,ac-q6o5f9r-shard-00-02.laimuxx.mongodb.net:27017/?ssl=true&replicaSet=atlas-ldwoui-shard-0&authSource=admin&retryWrites=true&w=majority"; 
+            const string connectionUri = "mongodb://caelanstraus:PASSWORD@ac-rg0cquc-shard-00-00.lntmq6w.mongodb.net:27017,ac-rg0cquc-shard-00-01.lntmq6w.mongodb.net:27017,ac-rg0cquc-shard-00-02.lntmq6w.mongodb.net:27017/?ssl=true&replicaSet=atlas-dkat5c-shard-0&authSource=admin&retryWrites=true&w=majority"; 
             var settings = MongoClientSettings.FromConnectionString(connectionUri);
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
 

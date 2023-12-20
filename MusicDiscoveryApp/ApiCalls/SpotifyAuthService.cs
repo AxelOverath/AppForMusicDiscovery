@@ -1,14 +1,14 @@
 ﻿using Amazon.SecurityToken.Model;
 using MongoDB.Bson.Serialization.Serializers;
-using MusicDiscoveryApp.ApiCalls;
-using Security;
+//using MusicDiscoveryApp.ApiCalls;
+//using Security;
 using SpotifyAPI.Web;
 using SpotifyAPI.Web.Auth;
 using Swan;
 using System;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
-
+/*
 public class SpotifyAuthService
 {
     private static EmbedIOAuthServer _server;
@@ -62,3 +62,4 @@ public class SpotifyAuthService
     }
 
 }
+*/

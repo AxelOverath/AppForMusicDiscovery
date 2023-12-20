@@ -6,13 +6,26 @@
     xmlns:local="clr-namespace:MusicDiscoveryApp"
     Shell.FlyoutBehavior="Disabled"
     Title="MusicDiscoveryApp">
+  
 
-    <ShellContent
-
-
-        Title="Login"
-        ContentTemplate="{DataTemplate local:Login}"
-        Route="LoginPage" />
-
-
+    <TabBar Shell.TabBarBackgroundColor="#288d52" Shell.TabBarUnselectedColor="White" Shell.TabBarForegroundColor="Aquamarine" >
+      
+        <ShellContent Shell.TabBarIsVisible="False"
+            Title="Signup"
+          ContentTemplate="{DataTemplate local:Signup}"/>
+        <ShellContent Shell.TabBarIsVisible="False"
+           Title="Signup"
+           ContentTemplate="{DataTemplate local:Signup}"/>  <!--Login-->
+        <ShellContent 
+                  Icon="musicalnote.png"
+                  ContentTemplate="{DataTemplate local:Swipepage}" />
+        <ShellContent Icon="book.png" 
+                      ContentTemplate="{DataTemplate local:Swipepage}" /> <!--TempLibrary-->
+        <ShellContent Icon="friends.png"
+                      ContentTemplate="{DataTemplate local:Swipepage}"/>  <!--FriendsList-->
+        <ShellContent
+                  Icon="settings.png"
+                  ContentTemplate="{DataTemplate local:Settings}"/>
+        
+    </TabBar>
 </Shell>

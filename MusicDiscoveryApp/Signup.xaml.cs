@@ -8,6 +8,8 @@ public partial class Signup : ContentPage
     public Signup()
     {
         InitializeComponent();
+        Shell.SetTabBarIsVisible(this, false);
+
     }
     public async void GoToLogin_Clicked(object sender, EventArgs e)
     {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Maui.Platform;
+using Microsoft.Maui.Platform;
 using MusicDiscoveryApp.Handlers;
 using SpotifyAPI.Web;
 
@@ -27,7 +27,7 @@ namespace MusicDiscoveryApp
         /*    var authService = new SpotifyAuthService();
             var accessToken = await authService.Authenticate();
 
-            if (!string.IsNullOrEmpty(accessToken))
+ //           if (!string.IsNullOrEmpty(accessToken))
             {
                 // Now you can use the access token to interact with the Spotify API
                 // For example, you can use it to make requests using HttpClient or other networking libraries

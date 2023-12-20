@@ -8,8 +8,7 @@
 
             GoToLogin();
         }
-
-        private async void GoToLogin()
+        public async void GoToLogin()
         {
             await Navigation.PushAsync(new Login());
         }

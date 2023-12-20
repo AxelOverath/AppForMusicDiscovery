@@ -1,4 +1,25 @@
-﻿using Microsoft.Extensions.Logging;
+﻿global using Microsoft.Extensions.Logging;
+global using MusicDiscoveryApp.ViewModels;
+global using MusicDiscoveryApp.Views;
+
+
+
+global using TinyMvvm;
+
+global using CommunityToolkit;
+global using CommunityToolkit.Mvvm.Input;
+global using CommunityToolkit.Mvvm.ComponentModel;
+
+global using System.Text.Json.Serialization;
+global using System;
+global using System.Net;
+global using System.Text;
+global using System.Text.Json;
+global using System.Windows.Input;
+global using System.Collections.ObjectModel;
+global using MusicDiscoveryApp.Services;
+
+using Microsoft.Extensions.Logging;
 
 namespace MusicDiscoveryApp
 {
@@ -18,7 +39,10 @@ namespace MusicDiscoveryApp
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<LoginView>();
 
+            builder.Services.AddSingleton<ISpotifyService, SpotifyService>();
             return builder.Build();
         }
     }

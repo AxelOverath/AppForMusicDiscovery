@@ -1,5 +1,3 @@
-using Microsoft.Maui.Controls;
-
 namespace MusicDiscoveryApp;
 
 public partial class Swipepage : ContentPage

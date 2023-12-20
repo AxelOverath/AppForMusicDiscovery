@@ -24,7 +24,7 @@ namespace MusicDiscoveryApp
 
             MainPage = new AppShell();
 
-            var authService = new SpotifyAuthService();
+        /*    var authService = new SpotifyAuthService();
             var accessToken = await authService.Authenticate();
 
             if (!string.IsNullOrEmpty(accessToken))
@@ -34,7 +34,7 @@ namespace MusicDiscoveryApp
             }
 
 
-
+            */
         }
     }
 }

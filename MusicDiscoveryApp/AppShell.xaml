@@ -4,15 +4,29 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MusicDiscoveryApp"
-    Shell.FlyoutBehavior="Disabled"
-    Title="MusicDiscoveryApp">
+    Title="MusicDiscoveryApp"
+    TabBarIsVisible="True">
 
-    <ShellContent
+    <TabBar>
+        <ShellContent Route="Swipepage"
+                     Title="Swipepage"
+                     Icon="musicalnote.png"
+                     ContentTemplate="{DataTemplate local:Swipepage}">
+        </ShellContent> 
 
+        <ShellContent Route="Library"
+                     Title="Library"
+                     Icon="book.png"
+                     ContentTemplate="{DataTemplate local:Swipepage}" />
 
-        Title="Login"
-        ContentTemplate="{DataTemplate local:Login}"
-        Route="LoginPage" />
+        <ShellContent Route="Friends"
+                     Title="Friends"
+                     Icon="friends.png"
+                     ContentTemplate="{DataTemplate local:Swipepage}" />
 
-
+        <ShellContent Route="Settings"
+                     Title="Settings"
+                     Icon="settings.png"
+                     ContentTemplate="{DataTemplate local:AccountDetails}" />
+    </TabBar>
 </Shell>

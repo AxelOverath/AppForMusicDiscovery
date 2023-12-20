@@ -1,5 +1,4 @@
 using MongoDB.Driver;
-using MongoDB.Bson;
 using MongoDB.Driver.Linq;
 
 namespace MusicDiscoveryApp
@@ -8,13 +7,13 @@ namespace MusicDiscoveryApp
     {
         private readonly string userEmail;
 
-        public RegisterInfo(string email)
+        public RegisterInfo()
         {
             InitializeComponent();
             DOBEntry.Date = new DateTime(2000, 1, 1);
             DOBEntry.MinimumDate = new DateTime(1900, 1, 1);
             DOBEntry.MaximumDate = DateTime.Now.AddYears(-3);
-            userEmail = email;
+            userEmail = UserStorage.storedEmail;
         }
 
         public async void GoToSwipePage_Clicked(object sender, EventArgs e)
@@ -45,7 +44,7 @@ namespace MusicDiscoveryApp
                 .Set(u => u.DateOfBirth, dateOfBirth);
 
             await Database.UsersCollection.UpdateOneAsync(filter, update);
-
+            UserStorage.storedUsername = username;
             await Navigation.PushAsync(new Swipepage());
         }
 

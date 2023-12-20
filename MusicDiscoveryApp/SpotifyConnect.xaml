@@ -6,4 +6,8 @@
     <VerticalStackLayout>
         <Button Text="Connect to Spotify"/>
     </VerticalStackLayout>
+
+    
+    
+
 </ContentPage>

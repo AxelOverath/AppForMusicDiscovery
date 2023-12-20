@@ -1,64 +1,41 @@
-﻿using Amazon.SecurityToken.Model;
-using MongoDB.Bson.Serialization.Serializers;
-using MusicDiscoveryApp.ApiCalls;
-using Security;
-using SpotifyAPI.Web;
-using SpotifyAPI.Web.Auth;
-using Swan;
-using System;
+﻿using System.Net.Http;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using static System.Formats.Asn1.AsnWriter;
+using MusicDiscoveryApp.ApiCalls;
+using System.Text.Json;
 
-public class SpotifyAuthService
+
+public class SpotifyAuthenticator
 {
-    private static EmbedIOAuthServer _server;
+    private const string ClientId = keys.clientId;
+    private const string ClientSecret = keys.clientSecret;
+    private const string RedirectUri = "http://localhost:8000/callback";
+    private const string Scope = "user-read-private user-read-email";
 
-    private static keys sleutel = new keys();
-
-    private static string clientid = sleutel.getclientId();
-    private static string clientsecret = sleutel.getclientSecret();
-
-    public static async Task Main()
+    public async Task<string> GetAccessTokenAsync(string authorizationCode)
     {
+        using var client = new HttpClient();
 
-
-        // Make sure "http://localhost:5543/callback" is in your spotify application as redirect uri!
-        _server = new EmbedIOAuthServer(new Uri("http://localhost:5543/callback"), 5543);
-        await _server.Start();
-
-        _server.AuthorizationCodeReceived += OnAuthorizationCodeReceived;
-        _server.ErrorReceived += OnErrorReceived;
-
-        var request = new LoginRequest(_server.BaseUri, clientid, LoginRequest.ResponseType.Code)
+        var tokenUrl = "https://accounts.spotify.com/api/token";
+        var tokenData = new FormUrlEncodedContent(new Dictionary<string, string>
         {
-            Scope = new List<string> { Scopes.UserReadEmail }
-        };
-        BrowserUtil.Open(request.ToUri());
+            {"grant_type", "authorization_code"},
+            {"code", authorizationCode},
+            {"redirect_uri", RedirectUri},
+            {"client_id", ClientId},
+            {"client_secret", ClientSecret}
+        });
 
-       
+        var tokenResponse = await client.PostAsync(tokenUrl, tokenData);
+        var tokenJson = await tokenResponse.Content.ReadAsStringAsync();
+        var token = JsonSerializer.Deserialize<SpotifyToken>(tokenJson);
+
+        return token.AccessToken;
     }
 
-    public static async Task OnAuthorizationCodeReceived(object sender, AuthorizationCodeResponse response)
+    private class SpotifyToken
     {
-        await _server.Stop();
-
-        var config = SpotifyClientConfig.CreateDefault();
-        var tokenResponse = await new OAuthClient(config).RequestToken(
-          new AuthorizationCodeTokenRequest(
-            clientid, clientsecret, response.Code, new Uri("http://localhost:5543/callback")
-          )
-        );
-
-        var spotify = new SpotifyClient(tokenResponse.AccessToken);
-        // do calls with Spotify and save token?
-        
+        [JsonPropertyName("access_token")]
+        public string AccessToken { get; set; }
     }
-    
-
-    private static async Task OnErrorReceived(object sender, string error, string state)
-    {
-        Console.WriteLine($"Aborting authorization, error received: {error}");
-        await _server.Stop();
-    }
-
 }

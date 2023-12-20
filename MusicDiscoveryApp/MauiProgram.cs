@@ -19,7 +19,7 @@ global using System.Windows.Input;
 global using System.Collections.ObjectModel;
 global using MusicDiscoveryApp.Services;
 
-using Microsoft.Extensions.Logging;
+
 
 namespace MusicDiscoveryApp
 {
@@ -43,6 +43,7 @@ namespace MusicDiscoveryApp
             builder.Services.AddTransient<LoginView>();
 
             builder.Services.AddSingleton<ISpotifyService, SpotifyService>();
+            builder.Services.AddSingleton<ISecureStorageService, SecureStorageService>();
             return builder.Build();
         }
     }

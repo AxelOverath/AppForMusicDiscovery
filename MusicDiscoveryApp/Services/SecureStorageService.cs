@@ -27,7 +27,7 @@ namespace MusicDiscoveryApp.Services
 
             if(savedValue == null)
             {
-                throw new KeyNotFoundException();
+                throw new KeyNotFoundException("No key in secure storage");
             }
 
             return savedValue;

@@ -1,6 +1,7 @@
 using System.Net;
 using System.Text;
 using static System.Net.WebRequestMethods;
+using MusicDiscoveryApp.ViewModels;
 
 namespace MusicDiscoveryApp.Views;
 

@@ -7,10 +7,14 @@ namespace MusicDiscoveryApp.Services;
 
 public class SpotifyService : ISpotifyService
 {
+    private readonly ISecureStorageService secureStorageService;
     private string accessToken;
-    public SpotifyService()
-    {
+    private string refreshToken;
 
+    public SpotifyService(ISecureStorageService secureStorageService)
+    {
+        this.secureStorageService = secureStorageService;
+        
     }
 
 
@@ -35,6 +39,15 @@ public class SpotifyService : ISpotifyService
         var result = JsonSerializer.Deserialize<AuthResult>(json);
 
         accessToken = result.AccessToken;
+
+        if (!string.IsNullOrWhiteSpace(result.RefreshToken))
+        {
+            refreshToken = result.RefreshToken;
+        }
+
+        await secureStorageService.Save(nameof(result.AccessToken), result.AccessToken);
+        await secureStorageService.Save(nameof(result.RefreshToken), result.RefreshToken);
+
 
         return response.IsSuccessStatusCode;
     }

@@ -8,6 +8,7 @@
     Title="MusicDiscoveryApp">
   
 
+
     <TabBar Shell.TabBarBackgroundColor="#288d52" Shell.TabBarUnselectedColor="White" Shell.TabBarForegroundColor="Aquamarine" >
       
         <ShellContent Shell.TabBarIsVisible="False"

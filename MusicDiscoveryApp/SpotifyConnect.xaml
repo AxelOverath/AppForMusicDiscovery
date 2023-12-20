@@ -2,8 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MusicDiscoveryApp.SpotifyConnect"
-             Title="SpotifyConnect">
-    <VerticalStackLayout>
-        <Button Text="Connect to Spotify"/>
+             Title="SpotifyConnect"
+             BackgroundColor="#ede2b0"
+             Shell.NavBarIsVisible="False">
+    
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center"  Spacing="100">
+        <Image Source="https://i.imgur.com/t3tWwVE.png" WidthRequest="300"/>
+        <VerticalStackLayout >
+            <Button Text="Connect Spotify" HorizontalOptions="Center" CornerRadius="20" WidthRequest="200" BackgroundColor="#2db36d"/>
+
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

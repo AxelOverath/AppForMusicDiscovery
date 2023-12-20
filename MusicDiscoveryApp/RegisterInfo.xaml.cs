@@ -1,16 +1,23 @@
+
 using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Driver.Linq;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace MusicDiscoveryApp
 {
     public partial class RegisterInfo : ContentPage
     {
+
         private readonly string userEmail;
 
         public RegisterInfo(string email)
         {
             InitializeComponent();
+            // Populate the Picker with country names
+            PopulateCountryPicker();
             DOBEntry.Date = new DateTime(2000, 1, 1);
             DOBEntry.MinimumDate = new DateTime(1900, 1, 1);
             DOBEntry.MaximumDate = DateTime.Now.AddYears(-3);
@@ -55,5 +62,31 @@ namespace MusicDiscoveryApp
             var existingUser = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
             return existingUser;
         }
+        
+        private void PopulateCountryPicker()
+        {
+            // Get all countries using CultureInfo
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+            List<string> countryNames = new List<string>();
+
+            foreach (CultureInfo culture in cultures)
+            {
+                RegionInfo region = new RegionInfo(culture.Name);
+                if (!countryNames.Contains(region.EnglishName))
+                {
+                    countryNames.Add(region.EnglishName);
+                }
+            }
+
+            // Sort the country names
+            countryNames.Sort();
+
+            // Add country names to the Picker
+            foreach (string countryName in countryNames)
+            {
+                CountryPicker.Items.Add(countryName);
+            }
+        }
+
     }
 }

@@ -19,10 +19,8 @@
 
         <VerticalStackLayout>
 
-            <!-- Horizontale StackLayout voor knoppen en lijn -->
             <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
 
-                <!-- Eerste Button -->
                 <Button
                     Text="For You"
                     x:Name="ForYouButton"
@@ -33,13 +31,11 @@
                     TextColor="#236738" 
                     FontAttributes="Bold"/>
 
-                <!-- Lijn (BoxView) tussen de knoppen -->
                 <BoxView
                     WidthRequest="1"
                     HeightRequest="25"
                     BackgroundColor="#236738" />
 
-                <!-- Tweede Button -->
                 <Button
                     Text="Random"
                     x:Name="RandomButton"
@@ -52,22 +48,22 @@
             </HorizontalStackLayout>
 
             <Image
-                Source="https://logos-world.net/wp-content/uploads/2020/09/Spotify-Logo.png"
+                Source="https://i.imgur.com/t3tWwVE.png"
                 HorizontalOptions="Center"
                 BackgroundColor="Transparent"
                 WidthRequest="100"/>
 
-            <!-- Afbeelding onder de knoppen -->
             <Image
+                x:Name="TrackImage"
                 Source="https://i.scdn.co/image/ab67616d0000b273a022feadbd7635c6cee11ef9"
                 Aspect="AspectFit"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand"
                 Margin="15,0,15,10" />
 
-            <Label Text="Erop Of Eronder" TextColor="#236738" FontAttributes="Bold" HorizontalOptions="End" Margin="15,5,15,0" FontSize="25"/>
-            <Label Text="Pommelien Thijs" TextColor="#236738" FontAttributes="Bold" Margin="15,5,15,0" FontSize="25"/>
-            <Label Text="Per Ongeluk" TextColor="#236738" FontAttributes="Bold" Margin="15,10,5,0" FontSize="25"/>
+            <Label x:Name="SongName" Text="Erop Of Eronder" TextColor="#236738" FontAttributes="Bold" HorizontalOptions="End" Margin="15,5,15,0" FontSize="25"/>
+            <Label x:Name="ArtistName" Text="Pommelien Thijs" TextColor="#236738" FontAttributes="Bold" Margin="15,5,15,0" FontSize="25"/>
+            <Label x:Name="AlbumName" Text="Per Ongeluk" TextColor="#236738" FontAttributes="Bold" Margin="15,10,5,0" FontSize="25"/>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="90" Margin="30">
                 <Button Text="✖" Clicked="OnDislikeButtonClicked" BackgroundColor="Red" TextColor="White" FontFamily="FontAwesome" FontSize="36" CornerRadius="50" WidthRequest="100" HeightRequest="100"/>

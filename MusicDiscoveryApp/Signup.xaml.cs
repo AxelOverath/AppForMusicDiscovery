@@ -1,6 +1,5 @@
 /*using MongoDB.Driver;
 using System.Net.Mail;
-using BCrypt.Net;
 
 namespace MusicDiscoveryApp;
 
@@ -9,6 +8,8 @@ public partial class Signup : ContentPage
     public Signup()
     {
         InitializeComponent();
+        Shell.SetTabBarIsVisible(this, false);
+
     }
     public async void GoToLogin_Clicked(object sender, EventArgs e)
     {
@@ -56,11 +57,12 @@ public partial class Signup : ContentPage
             return;
         }
 
+        UserStorage.storedEmail = email;
+
         // If the user doesn't exist, you can now proceed to insert the user into the database
         await Database.UsersCollection.InsertOneAsync(new User { Email = email, Password = hashedPassword});
 
-        // Pass the user's email to RegisterInfo
-        await Navigation.PushAsync(new RegisterInfo(email));
+        await Navigation.PushAsync(new RegisterInfo());
     }
 
     private bool IsValidEmail(string email)

@@ -17,14 +17,6 @@ public partial class Swipepage : ContentPage
         }
     }
 
-    private void OnButtonHovered(object sender, EventArgs e)
-    {
-        if (sender is Button button)
-        {
-            
-        }
-    }
-
     private void OnForYouButtonClicked(object sender, EventArgs e)
     {
         DisplayAlert("For You Clicked", "You clicked the 'For You' button!", "OK");
@@ -37,26 +29,41 @@ public partial class Swipepage : ContentPage
 
     private void OnLikeButtonClicked(object sender, EventArgs e)
     {
-        DisplayAlert("For You Clicked", "You clicked the 'Like' button!", "OK");
+        TrackImage.Source = "https://i.scdn.co/image/ab67616d0000b2734718e2b124f79258be7bc452";
+        SongName.Text = "Party Monster";
+        ArtistName.Text = "The Weeknd";
+        AlbumName.Text = "Starboy (Deluxe)";
     }
 
     private void OnDislikeButtonClicked(object sender, EventArgs e)
     {
-        DisplayAlert("For You Clicked", "You clicked the 'Dislike' button!", "OK");
+        TrackImage.Source = "https://i.scdn.co/image/ab67616d0000b273a022feadbd7635c6cee11ef9";
+        SongName.Text = "Erop Of Eronder";
+        ArtistName.Text = "Pommelien Thijs";
+        AlbumName.Text = "Per Ongeluk";
     }
 
     private void OnSwipeChanging(object sender, SwipeChangingEventArgs e)
     {
         if (e.Offset > 0)
         {
-            // Swipe naar rechts (like)
-            DisplayAlert("Like", "Je hebt naar rechts geswiped (like)!", "OK");
+            TrackImage.Source = "https://i.scdn.co/image/ab67616d0000b2734718e2b124f79258be7bc452";
+            SongName.Text = "Party Monster";
+            ArtistName.Text = "The Weeknd";
+            AlbumName.Text = "Starboy (Deluxe)";
         }
         else if (e.Offset < 0)
         {
-            // Swipe naar links (dislike)
-            DisplayAlert("Dislike", "Je hebt naar links geswiped (dislike)!", "OK");
+            TrackImage.Source = "https://i.scdn.co/image/ab67616d0000b273a022feadbd7635c6cee11ef9";
+            SongName.Text = "Erop Of Eronder";
+            ArtistName.Text = "Pommelien Thijs";
+            AlbumName.Text = "Per Ongeluk";
         }
         swipeView.Close();
+    }
+
+    private void GetNewSong()
+    {
+
     }
 }

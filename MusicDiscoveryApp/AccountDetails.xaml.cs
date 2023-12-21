@@ -8,8 +8,9 @@ namespace MusicDiscoveryApp
         public AccountDetails()
         {
             InitializeComponent();
-            emailEntry.Text = UserStorage.storedEmail;
             usernameEntry.Text = UserStorage.storedUsername;
+            emailEntry.Text = UserStorage.storedEmail;
+            Shell.SetTabBarIsVisible(this, false);
         }
 
         private async void Confirm_Clicked(object sender, EventArgs e)
@@ -74,6 +75,12 @@ namespace MusicDiscoveryApp
                 await DisplayAlert("Error", "Failed to update account details.", "OK");
             }
         }
+
+        async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync(); // Navigate back to the previous page (SettingsPage)
+        }
+
 
         private bool IsValidEmail(string email)
         {

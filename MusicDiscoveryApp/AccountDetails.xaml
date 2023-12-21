@@ -51,8 +51,10 @@
         </StackLayout>
 
         <!-- Buttons -->
+        <!-- Buttons -->
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
             <Button Text="Confirm" Clicked="Confirm_Clicked" BackgroundColor="#288d52" TextColor="White" WidthRequest="120" HeightRequest="50" CornerRadius="10" Margin="5"/>
+            <Button Text="Cancel" Clicked="Cancel_Clicked" BackgroundColor="#c62828" TextColor="White" WidthRequest="120" HeightRequest="50" CornerRadius="10" Margin="5"/>
         </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

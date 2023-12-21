@@ -4,5 +4,5 @@
     public static string? storedUsername { get; set; }
 
     //Usage
-    //UserStorage.storedEmail
+    //UserStorage.storedEmail = "";
 }

@@ -7,12 +7,20 @@
     Shell.FlyoutBehavior="Disabled"
     Title="MusicDiscoveryApp">
 
-    <ShellContent
+    <TabBar Shell.TabBarBackgroundColor="#288d52" Shell.TabBarUnselectedColor="White" Shell.TabBarForegroundColor="Aquamarine" >
+        <ShellContent 
+                  Icon="musicalnote.png"
+                  ContentTemplate="{DataTemplate local:Swipepage}" />
+        <ShellContent Icon="book.png" 
+                      ContentTemplate="{DataTemplate local:Swipepage}" />
+        <!--TempLibrary-->
+        <ShellContent Icon="friends.png"
+                      ContentTemplate="{DataTemplate local:Swipepage}"/>
+        <!--FriendsList-->
+        <ShellContent Icon="settings.png"
+                      ContentTemplate="{DataTemplate local:Settings}"/>
 
-
-        Title="Login"
-        ContentTemplate="{DataTemplate views:LoginView}"
-        Route="LoginPage" />
+    </TabBar>
 
 
 </Shell>

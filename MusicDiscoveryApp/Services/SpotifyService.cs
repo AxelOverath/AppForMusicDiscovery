@@ -14,7 +14,7 @@ public class SpotifyService : ISpotifyService
     public SpotifyService(ISecureStorageService secureStorageService)
     {
         this.secureStorageService = secureStorageService;
-        
+
     }
 
 
@@ -49,7 +49,7 @@ public class SpotifyService : ISpotifyService
         await secureStorageService.Save(nameof(result.RefreshToken), result.RefreshToken);
 
 
-        return response.IsSuccessStatusCode;
+        return true;
     }
 
 }

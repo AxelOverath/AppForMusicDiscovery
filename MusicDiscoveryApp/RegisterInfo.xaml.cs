@@ -17,14 +17,14 @@ namespace MusicDiscoveryApp
             InitializeComponent();
             Shell.SetTabBarIsVisible(this, false);
             // Populate the Picker with country names
-            PopulateCountryPicker();
+            //PopulateCountryPicker();
             DOBEntry.Date = new DateTime(2000, 1, 1);
             DOBEntry.MinimumDate = new DateTime(1900, 1, 1);
             DOBEntry.MaximumDate = DateTime.Now.AddYears(-3);
             userEmail = UserStorage.storedEmail;
         }
 
-        public async void GoToSwipePage_Clicked(object sender, EventArgs e)
+        public async void GoToSwipe_Clicked(object sender, EventArgs e)
         {
             string firstName = firstNameEntry.Text;
             string lastName = lastNameEntry.Text;
@@ -53,7 +53,7 @@ namespace MusicDiscoveryApp
 
             await Database.UsersCollection.UpdateOneAsync(filter, update);
             UserStorage.storedUsername = username;
-            await Navigation.PushAsync(new Swipepage());
+            await Shell.Current.GoToAsync("//SpotifyCc");
         }
 
         private async Task<User> CheckIfUsernameExists(string username)
@@ -63,7 +63,7 @@ namespace MusicDiscoveryApp
             return existingUser;
         }
         
-        private void PopulateCountryPicker()
+      /* private void PopulateCountryPicker()
         {
             // Get all countries using CultureInfo
             CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
@@ -86,7 +86,7 @@ namespace MusicDiscoveryApp
             {
                 CountryPicker.Items.Add(countryName);
             }
-        }
+        }*/
 
     }
 }

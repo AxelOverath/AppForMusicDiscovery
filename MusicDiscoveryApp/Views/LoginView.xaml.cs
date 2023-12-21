@@ -80,12 +80,12 @@ public partial class LoginView
             var code = parameters["code"];
             var returnState = parameters["state"];
 
-            if(returnState == state && !string.IsNullOrWhiteSpace(code))
+            if (returnState == state && !string.IsNullOrWhiteSpace(code))
             {
-                _= Task.Run(async () => await loginViewModel.HandleAuthCode(code));
+                _ = Task.Run(async () => await loginViewModel.HandleAuthCode(code));
 
 
-                 await Login.TranslateTo(Login.X, this.Height, easing: Easing.Linear);
+                await Login.TranslateTo(Login.X, this.Height, easing: Easing.Linear);
                 Login.IsVisible = false;
             }
 

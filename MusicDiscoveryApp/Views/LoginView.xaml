@@ -8,13 +8,13 @@
              Shell.NavBarIsVisible="False"
              Title="LoginView">
     <Grid>
-        
+
         <Button Text="Login to Spotify"
                 Command="{Binding OpenLoginCommand}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
 
-                  
+
 
         <Frame x:Name="Login" IsVisible="False" CornerRadius="10" BorderColor="Black" Padding="0">
             <WebView x:Name="LoginWeb" />

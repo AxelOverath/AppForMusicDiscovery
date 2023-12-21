@@ -49,21 +49,21 @@
                 <DatePicker x:Name="DOBEntry" FontSize="15" VerticalOptions="Center" TextColor="#236738"/>
             </Frame>
         </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <!-- StackLayout for capturing user's Country -->
-            <StackLayout Orientation="Horizontal" WidthRequest="350">
-                <!-- Set a fixed width, adjust as needed -->
-                <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
-                    <Image Source="globe.png" HeightRequest="20" WidthRequest="20"/>
-                </Frame>
-                <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
-                    <!-- Use a Picker control for country selection -->
-                    <Picker x:Name="CountryPicker" Title="Select Country" TitleColor="#236738" Margin="40,0,0,0" VerticalOptions="Center" TextColor="#236738" />
-                </Frame>
-            </StackLayout>
+         <!--<StackLayout Orientation="Horizontal">
+            --><!-- StackLayout for capturing user's Country --><!--
+        <StackLayout Orientation="Horizontal" WidthRequest="350">
+            --><!-- Set a fixed width, adjust as needed --><!--
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="globe.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                --><!-- Use a Picker control for country selection --><!--
+                <Picker x:Name="CountryPicker" Title="Select Country" TitleColor="#236738" Margin="40,0,0,0" VerticalOptions="Center" TextColor="#236738" />
+            </Frame>
         </StackLayout>
+        </StackLayout>-->
 
-        <Button Text="Confirm"   HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d"/>
+        <Button Text="Confirm" Clicked="GoToSwipe_Clicked"  HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d"/>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
         </StackLayout>
 

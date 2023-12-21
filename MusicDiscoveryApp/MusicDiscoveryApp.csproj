@@ -105,7 +105,17 @@
 	<ItemGroup>
 
 
+    <MauiXaml Update="AccountDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+
+
     <MauiXaml Update="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+
+
+    <MauiXaml Update="RemoveAccount.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
 
@@ -124,10 +134,6 @@
 	  </MauiXaml>
 	  <MauiXaml Update="Signup.xaml">
 
-
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="TabBar.xaml">
 
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

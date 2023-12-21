@@ -4,12 +4,20 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MusicDiscoveryApp"
-    Shell.FlyoutBehavior="Disabled"
     Title="MusicDiscoveryApp">
 
-    <ShellContent Shell.TabBarIsVisible="False"
-    Title="Settings"
-    ContentTemplate="{DataTemplate local:SettingsPage}"/>
-    
 
+    <TabBar Shell.TabBarBackgroundColor="#288d52" Shell.TabBarUnselectedColor="White" Shell.TabBarForegroundColor="Aquamarine" >
+        <ShellContent 
+                  Icon="musicalnote.png"
+                  ContentTemplate="{DataTemplate local:Swipepage}" />
+        <ShellContent Icon="book.png" 
+                      ContentTemplate="{DataTemplate local:Swipepage}" /> <!--TempLibrary-->
+        <ShellContent Icon="friends.png"
+                      ContentTemplate="{DataTemplate local:Swipepage}"/>  <!--FriendsList-->
+        <ShellContent Icon="settings.png"
+                      ContentTemplate="{DataTemplate local:Settings}"/>
+        
+    </TabBar>
 </Shell>
+

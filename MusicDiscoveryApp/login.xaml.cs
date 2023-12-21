@@ -24,14 +24,14 @@ public partial class Login : ContentPage
 
         if (existingUser != null && BCrypt.Net.BCrypt.Verify(password, existingUser.Password))
         {
+            UserStorage.storedUsername = existingUser.Username;
+            UserStorage.storedEmail = existingUser.Email;
             if (AnyUserInfoIsNull(existingUser))
             {
                 await Navigation.PushAsync(new RegisterInfo());
             }
             else
             {
-                UserStorage.storedUsername = existingUser.Username;
-                UserStorage.storedEmail = existingUser.Email;
                 await Navigation.PushAsync(new Swipepage());
             }
         }

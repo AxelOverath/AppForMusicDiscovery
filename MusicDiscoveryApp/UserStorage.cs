@@ -1,7 +1,7 @@
 ﻿internal class UserStorage
 {
-    public static string? storedEmail { get; set; }
-    public static string? storedUsername { get; set; }
+    public static string? storedEmail;
+    public static string? storedUsername;
 
     //Usage
     //UserStorage.storedEmail

@@ -62,8 +62,11 @@ public partial class Swipepage : ContentPage
         swipeView.Close();
     }
 
-    private void GetNewSong()
+    private void OnImageClicked(object sender, EventArgs e)
     {
-
+        if (mediaElement.CurrentState == CommunityToolkit.Maui.Core.Primitives.MediaElementState.Playing)
+            mediaElement.Pause();
+        else if (mediaElement.CurrentState == CommunityToolkit.Maui.Core.Primitives.MediaElementState.Paused)
+            mediaElement.Play();
     }
 }

@@ -16,8 +16,10 @@ namespace MusicDiscoveryApp
         {
             InitializeComponent();
             Shell.SetTabBarIsVisible(this, false);
+
             // Populate the Picker with country names
             //PopulateCountryPicker();
+
             DOBEntry.Date = new DateTime(2000, 1, 1);
             DOBEntry.MinimumDate = new DateTime(1900, 1, 1);
             DOBEntry.MaximumDate = DateTime.Now.AddYears(-3);
@@ -31,7 +33,7 @@ namespace MusicDiscoveryApp
             string username = usernameEntry.Text;
             DateTime dateOfBirth = DOBEntry.Date;
 
-            if (firstName == null || lastName == null || username == null)
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(username))
             {
                 await DisplayAlert("Error", "Please fill in all fields.", "OK");
                 return;
@@ -62,6 +64,7 @@ namespace MusicDiscoveryApp
             var existingUser = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
             return existingUser;
         }
+
         
       /* private void PopulateCountryPicker()
         {
@@ -87,6 +90,7 @@ namespace MusicDiscoveryApp
                 CountryPicker.Items.Add(countryName);
             }
         }*/
+
 
     }
 }

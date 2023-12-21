@@ -63,7 +63,9 @@
         </StackLayout>
         </StackLayout>-->
 
+
         <Button Text="Confirm" Clicked="GoToSwipe_Clicked"  HorizontalOptions="Center" CornerRadius="20" WidthRequest="100" BackgroundColor="#2db36d"/>
+
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
         </StackLayout>
 

@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:MusicDiscoveryApp"
     Title="MusicDiscoveryApp">
 
+
     <TabBar Shell.TabBarBackgroundColor="#288d52" Shell.TabBarUnselectedColor="White" Shell.TabBarForegroundColor="Aquamarine" >
         <ShellContent 
                   Icon="musicalnote.png"
@@ -19,3 +20,4 @@
         
     </TabBar>
 </Shell>
+

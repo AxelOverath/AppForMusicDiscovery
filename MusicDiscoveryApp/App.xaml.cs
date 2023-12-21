@@ -24,6 +24,7 @@ namespace MusicDiscoveryApp
 
             MainPage = new AppShell();
 
+
         /*    var authService = new SpotifyAuthService();
             var accessToken = await authService.Authenticate();
 
@@ -34,7 +35,15 @@ namespace MusicDiscoveryApp
             }
 
 
+               if (!string.IsNullOrEmpty(accessToken))
+               {
+                   // Now you can use the access token to interact with the Spotify API
+                   // For example, you can use it to make requests using HttpClient or other networking libraries
+               }
+
+
             */
+
         }
     }
 }

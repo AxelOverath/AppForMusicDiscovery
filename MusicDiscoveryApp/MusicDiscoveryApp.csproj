@@ -123,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
 
+    <MauiXaml Update="SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+
     <MauiXaml Update="Swipepage.xaml" />
     <MauiXaml Update="login.xaml" />
 	  <MauiXaml Update="RegisterInfo.xaml">

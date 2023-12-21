@@ -16,13 +16,17 @@ namespace MusicDiscoveryApp
         {
             InitializeComponent();
             Shell.SetTabBarIsVisible(this, false);
+
+            // Populate the Picker with country names
+            //PopulateCountryPicker();
+
             DOBEntry.Date = new DateTime(2000, 1, 1);
             DOBEntry.MinimumDate = new DateTime(1900, 1, 1);
             DOBEntry.MaximumDate = DateTime.Now.AddYears(-3);
             userEmail = UserStorage.storedEmail;
         }
 
-        public async void GoToSwipePage_Clicked(object sender, EventArgs e)
+        public async void GoToSwipe_Clicked(object sender, EventArgs e)
         {
             string firstName = firstNameEntry.Text;
             string lastName = lastNameEntry.Text;
@@ -51,7 +55,7 @@ namespace MusicDiscoveryApp
 
             await Database.UsersCollection.UpdateOneAsync(filter, update);
             UserStorage.storedUsername = username;
-            await Navigation.PushAsync(new Swipepage());
+            await Shell.Current.GoToAsync("//SpotifyCc");
         }
 
         private async Task<User> CheckIfUsernameExists(string username)
@@ -60,5 +64,33 @@ namespace MusicDiscoveryApp
             var existingUser = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
             return existingUser;
         }
+
+        
+      /* private void PopulateCountryPicker()
+        {
+            // Get all countries using CultureInfo
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+            List<string> countryNames = new List<string>();
+
+            foreach (CultureInfo culture in cultures)
+            {
+                RegionInfo region = new RegionInfo(culture.Name);
+                if (!countryNames.Contains(region.EnglishName))
+                {
+                    countryNames.Add(region.EnglishName);
+                }
+            }
+
+            // Sort the country names
+            countryNames.Sort();
+
+            // Add country names to the Picker
+            foreach (string countryName in countryNames)
+            {
+                CountryPicker.Items.Add(countryName);
+            }
+        }*/
+
+
     }
 }

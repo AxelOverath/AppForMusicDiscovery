@@ -4,13 +4,15 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MusicDiscoveryApp"
+    xmlns:views="clr-namespace:MusicDiscoveryApp.Views"
     Title="MusicDiscoveryApp">
 
 
     <TabBar Shell.TabBarBackgroundColor="#288d52" Shell.TabBarUnselectedColor="White" Shell.TabBarForegroundColor="Aquamarine" >
         <ShellContent 
                   Icon="musicalnote.png"
-                  ContentTemplate="{DataTemplate local:Swipepage}" />
+                  ContentTemplate="{DataTemplate local:Swipepage}" 
+                  Route="swipepage"/>
         <ShellContent Icon="book.png" 
                       ContentTemplate="{DataTemplate local:Swipepage}" /> <!--TempLibrary-->
         <ShellContent Icon="friends.png"
@@ -19,5 +21,10 @@
                       ContentTemplate="{DataTemplate local:Settings}"/>
         
     </TabBar>
+    
+    <ShellContent
+    Title="Home"
+    ContentTemplate="{DataTemplate views:LoginView}"
+    Route="SpotifyCc" />
 </Shell>
 

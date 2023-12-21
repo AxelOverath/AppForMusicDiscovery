@@ -23,6 +23,8 @@ namespace MusicDiscoveryApp
             });
 
             MainPage = new AppShell();
+
       }
+
     }
 }

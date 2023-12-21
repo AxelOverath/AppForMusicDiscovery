@@ -1,4 +1,4 @@
-using MongoDB.Driver;
+/*using MongoDB.Driver;
 using System.Net.Mail;
 
 namespace MusicDiscoveryApp;
@@ -84,4 +84,4 @@ public partial class Signup : ContentPage
         var existingUser = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
         return existingUser;
     }
-}
+}*/

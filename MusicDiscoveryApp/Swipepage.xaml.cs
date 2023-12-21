@@ -1,5 +1,3 @@
-using Microsoft.Maui.Controls;
-
 namespace MusicDiscoveryApp;
 
 public partial class Swipepage : ContentPage
@@ -13,9 +11,9 @@ public partial class Swipepage : ContentPage
     {
         if (sender is Button button)
         {
-            RandomButton.TextColor = Color.FromHex("236738");
-            ForYouButton.TextColor = Color.FromHex("236738");
-            button.TextColor = Color.FromHex("#1f421e");
+            RandomButton.TextColor = Color.FromArgb("236738");
+            ForYouButton.TextColor = Color.FromArgb("236738");
+            button.TextColor = Color.FromArgb("#1f421e");
         }
     }
 

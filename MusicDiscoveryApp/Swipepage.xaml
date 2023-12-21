@@ -48,7 +48,7 @@
             </HorizontalStackLayout>
 
             <Image
-                Source="https://logos-world.net/wp-content/uploads/2020/09/Spotify-Logo.png"
+                Source="https://i.imgur.com/t3tWwVE.png"
                 HorizontalOptions="Center"
                 BackgroundColor="Transparent"
                 WidthRequest="100"/>

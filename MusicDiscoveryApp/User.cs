@@ -4,11 +4,13 @@ namespace MusicDiscoveryApp;
 
 public class User
 {
-    public ObjectId Id { get; set; }
-    public string? Email { get; set; }
-    public string? Password { get; set; }
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
-    public string? Username { get; set; }
-    public DateTime DateOfBirth { get; set; }
+    public ObjectId Id;
+    public string? Email;
+    public string? Password;
+    public string? FirstName;
+    public string? LastName;
+    public string? Username;
+    public DateTime DateOfBirth;
+    public string? AccessToken;
+    public string? RefreshToken;
 }

@@ -14,7 +14,6 @@ public class SpotifyService : ISpotifyService
     public SpotifyService(ISecureStorageService secureStorageService)
     {
         this.secureStorageService = secureStorageService;
-
     }
 
 
@@ -45,9 +44,22 @@ public class SpotifyService : ISpotifyService
             refreshToken = result.RefreshToken;
         }
 
+        var user = new User
+        {
+            AccessToken = accessToken,
+            RefreshToken = refreshToken
+        };
+
+        // Insert the user with tokens into the database
+        await Database.InsertUserAsync(user);
+
+        // save the AccessToken and RefreshToken into the database.
+
         await secureStorageService.Save(nameof(result.AccessToken), result.AccessToken);
         await secureStorageService.Save(nameof(result.RefreshToken), result.RefreshToken);
 
+        UserStorage.accessToken = accessToken;
+        UserStorage.refreshToken = refreshToken;
 
         return true;
     }

@@ -75,6 +75,7 @@
 	<ItemGroup>
 		<None Remove="Resources\Images\about_us.png" />
 		<None Remove="Resources\Images\accept.svg" />
+		<None Remove="Resources\Images\add.svg" />
 		<None Remove="Resources\Images\arrow_left.svg" />
 		<None Remove="Resources\Images\company_logo.jpg" />
 		<None Remove="Resources\Images\contact_us.png" />

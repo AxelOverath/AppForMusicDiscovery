@@ -1,4 +1,5 @@
-﻿using MusicDiscoveryApp.Models;
+﻿using MongoDB.Driver;
+using MusicDiscoveryApp.Models;
 
 namespace MusicDiscoveryApp.Services;
 
@@ -40,20 +41,20 @@ public class SpotifyService : ISpotifyService
             refreshToken = result.RefreshToken;
         }
 
-        var user = new User
-        {
-            AccessToken = accessToken,
-            RefreshToken = refreshToken
-        };
-
-        // Insert the user with tokens into the database
-        await Database.InsertUserAsync(user);
-
-        // save the AccessToken and RefreshToken into the database.
-
         await secureStorageService.Save(nameof(result.AccessToken), result.AccessToken);
         await secureStorageService.Save(nameof(result.RefreshToken), result.RefreshToken);
 
+        IMongoCollection<User> usersCollection = Database.UsersCollection;
+
+        var filter = Builders<User>.Filter.Eq(u => u.Email, UserStorage.storedEmail);
+
+        var update = Builders<User>.Update
+            .Set(u => u.AccessToken, accessToken)
+            .Set(u => u.RefreshToken, refreshToken);
+
+        var updateResult = await usersCollection.UpdateOneAsync(filter, update);
+
+        // Update successful
         UserStorage.accessToken = accessToken;
         UserStorage.refreshToken = refreshToken;
 

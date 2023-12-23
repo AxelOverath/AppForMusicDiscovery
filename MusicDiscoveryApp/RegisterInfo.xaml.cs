@@ -51,11 +51,13 @@ namespace MusicDiscoveryApp
                 .Set(u => u.FirstName, firstName)
                 .Set(u => u.LastName, lastName)
                 .Set(u => u.Username, username)
-                .Set(u => u.DateOfBirth, dateOfBirth);
+                .Set(u => u.DateOfBirth, dateOfBirth)
+                .Set(u => u.Friends, new List<string>())
+                .Set(u => u.FriendRequests, new List<string>());
 
             await Database.UsersCollection.UpdateOneAsync(filter, update);
             UserStorage.storedUsername = username;
-            await Shell.Current.GoToAsync("//SpotifyCc");
+            await Navigation.PushAsync(new Swipepage());
         }
 
         private async Task<User> CheckIfUsernameExists(string username)

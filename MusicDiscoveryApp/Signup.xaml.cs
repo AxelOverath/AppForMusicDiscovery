@@ -60,7 +60,8 @@ public partial class Signup : ContentPage
         UserStorage.storedEmail = email;
 
         // If the user doesn't exist, you can now proceed to insert the user into the database
-        await Database.UsersCollection.InsertOneAsync(new User { Email = email, Password = hashedPassword});
+        await Database.UsersCollection.InsertOneAsync(new User { Email = email, Password = hashedPassword, Friends = new List<string>(), FriendRequests = new List<string>()
+        });
 
         await Navigation.PushAsync(new RegisterInfo());
     }

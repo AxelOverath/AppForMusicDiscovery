@@ -1,9 +1,10 @@
+
 ﻿global using Microsoft.Extensions.Logging;
 global using MusicDiscoveryApp.ViewModels;
 global using MusicDiscoveryApp.Views;
 
 
-
+global using CommunityToolkit.Maui;
 global using TinyMvvm;
 
 global using CommunityToolkit;
@@ -20,7 +21,6 @@ global using System.Collections.ObjectModel;
 global using MusicDiscoveryApp.Services;
 
 
-
 namespace MusicDiscoveryApp
 {
     public static class MauiProgram
@@ -30,6 +30,7 @@ namespace MusicDiscoveryApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkitMediaElement()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

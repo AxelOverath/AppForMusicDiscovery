@@ -10,7 +10,7 @@
         <ShellContent 
                   Icon="musicalnote.png"
                   ContentTemplate="{DataTemplate local:Swipepage}" 
-                  Route="swipepage"/>
+                  Route="Swipepage"/>
         <ShellContent Icon="book.png" 
                       ContentTemplate="{DataTemplate local:Swipepage}" /> <!--TempLibrary-->
         <ShellContent Icon="friends.png"
@@ -19,10 +19,10 @@
                       ContentTemplate="{DataTemplate local:Settings}"/>
         
     </TabBar>
-    
     <ShellContent
     Title="Home"
     ContentTemplate="{DataTemplate views:LoginView}"
     Route="SpotifyCc" />
+    
 </Shell>
 

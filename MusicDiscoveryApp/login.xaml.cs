@@ -32,7 +32,7 @@ public partial class Login : ContentPage
             }
             else
             {
-                await Navigation.PushAsync(new Swipepage());
+                await Shell.Current.GoToAsync("//SpotifyCc");
             }
         }
         else

@@ -10,7 +10,7 @@
         }
         public async void GoToLogin()
         {
-            await Navigation.PushAsync(new FriendAdd());
+            await Navigation.PushAsync(new Login());
         }
     }
 }

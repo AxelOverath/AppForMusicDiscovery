@@ -44,6 +44,7 @@
                        BackgroundColor="Transparent"
                        CancelButtonColor="Black"
                        PlaceholderColor="Black"
+                       x:Name="SearchBar"
                        TextColor="Black"/>
         </StackLayout>
 

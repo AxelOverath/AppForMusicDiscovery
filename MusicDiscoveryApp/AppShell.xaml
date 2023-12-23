@@ -12,17 +12,15 @@
                   ContentTemplate="{DataTemplate local:Swipepage}" 
                   Route="Swipepage"/>
         <ShellContent Icon="book.png" 
-                      ContentTemplate="{DataTemplate local:Swipepage}" /> <!--TempLibrary-->
+                      ContentTemplate="{DataTemplate local:Swipepage}" />
+        <!--TempLibrary-->
         <ShellContent Icon="friends.png"
-                      ContentTemplate="{DataTemplate local:FriendList}"/>  
+                      ContentTemplate="{DataTemplate local:FriendList}"/>
         <ShellContent Icon="settings.png"
                       ContentTemplate="{DataTemplate local:Settings}"/>
-        
+        <ShellContent IsVisible="False"
+                      Title="Home"
+                      ContentTemplate="{DataTemplate views:LoginView}"
+                      Route="SpotifyCc" />
     </TabBar>
-    <ShellContent
-    Title="Home"
-    ContentTemplate="{DataTemplate views:LoginView}"
-    Route="SpotifyCc" />
-    
 </Shell>
-

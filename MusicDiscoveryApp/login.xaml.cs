@@ -32,7 +32,8 @@ public partial class Login : ContentPage
             }
             else
             {
-                await Shell.Current.GoToAsync("//SpotifyCc");
+                await Navigation.PushAsync(new Swipepage());
+                //await Shell.Current.GoToAsync("//SpotifyCc");
             }
         }
         else

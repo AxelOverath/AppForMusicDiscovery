@@ -14,6 +14,7 @@ public partial class LoginView
     public LoginView(LoginViewModel loginViewModel)
     {
         InitializeComponent();
+        Shell.SetTabBarIsVisible(this, false);
         this.loginViewModel = loginViewModel;
 
         BindingContext = loginViewModel;

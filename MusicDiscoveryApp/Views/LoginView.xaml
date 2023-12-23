@@ -16,8 +16,6 @@
 
         <Button Text="Continue" Clicked="GoToSwipe_Clicked" VerticalOptions="End" HorizontalOptions="Center" />
     
-
-
         <Frame x:Name="Login" IsVisible="False" CornerRadius="10" BorderColor="Black" Padding="0">
             <WebView x:Name="LoginWeb" />
         </Frame>

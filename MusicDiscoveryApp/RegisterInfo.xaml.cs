@@ -23,7 +23,10 @@ namespace MusicDiscoveryApp
             DOBEntry.Date = new DateTime(2000, 1, 1);
             DOBEntry.MinimumDate = new DateTime(1900, 1, 1);
             DOBEntry.MaximumDate = DateTime.Now.AddYears(-3);
-            userEmail = UserStorage.storedEmail;
+            if (UserStorage.storedEmail != null)
+            {
+                userEmail = UserStorage.storedEmail;
+            }
         }
 
         public async void GoToSwipe_Clicked(object sender, EventArgs e)
@@ -57,7 +60,8 @@ namespace MusicDiscoveryApp
 
             await Database.UsersCollection.UpdateOneAsync(filter, update);
             UserStorage.storedUsername = username;
-            await Shell.Current.GoToAsync("//SpotifyCc");
+            await Navigation.PushAsync(new Swipepage());
+            //await Shell.Current.GoToAsync("//SpotifyCc");
         }
 
         private async Task<User> CheckIfUsernameExists(string username)

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MusicDiscoveryApp.Swipepage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="#ede2b0">
@@ -51,7 +52,9 @@
                 Source="https://i.imgur.com/t3tWwVE.png"
                 HorizontalOptions="Center"
                 BackgroundColor="Transparent"
-                WidthRequest="100"/>
+                WidthRequest="100">
+            </Image>
+
 
             <Image
                 x:Name="TrackImage"
@@ -59,7 +62,16 @@
                 Aspect="AspectFit"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand"
-                Margin="15,0,15,10" />
+                Margin="15,0,15,10">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnImageClicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+
+            <toolkit:MediaElement x:Name="mediaElement" WidthRequest="400" HeightRequest="300" IsVisible="False" ShouldAutoPlay="True"
+                                  Source="https://p.scdn.co/mp3-preview/4342c3b6ed18bf2724a6242bf8107c9f908ba347?cid=11ff1648f7a6456fa310525943"/>
 
             <Label x:Name="SongName" Text="Erop Of Eronder" TextColor="#236738" FontAttributes="Bold" HorizontalOptions="End" Margin="15,5,15,0" FontSize="25"/>
             <Label x:Name="ArtistName" Text="Pommelien Thijs" TextColor="#236738" FontAttributes="Bold" Margin="15,5,15,0" FontSize="25"/>

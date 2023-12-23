@@ -22,11 +22,9 @@ public partial class LoginViewModel : ViewModel
     }
     public async Task HandleAuthCode(string code)
     {
-        await spotifyService.Initialize(code);
-       
-            await Navigation.NavigateTo("swipepage");
-        
+       await spotifyService.Initialize(code);
 
+        
     }
 
 }

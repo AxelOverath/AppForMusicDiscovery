@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MusicDiscoveryApp.AccountDetails"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:handlers="clr-namespace:MusicDiscoveryApp.Handlers"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#ede2b0"
+             Shell.TabBarIsVisible="False">
+
+    <VerticalStackLayout Spacing="25"
+                         Padding="20"
+                         VerticalOptions="Center">
+
+        <!-- Username -->
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless x:Name="usernameEntry" VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Username" PlaceholderColor="#236738" TextColor="Black"/>
+            </Frame>
+        </StackLayout>
+
+        <!-- Email -->
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless x:Name="emailEntry" VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Email" PlaceholderColor="#236738" TextColor="Black"/>
+            </Frame>
+        </StackLayout>
+
+        <!-- Password -->
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="lock.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless x:Name="passwordEntry" VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Password" PlaceholderColor="#236738" TextColor="Black" IsPassword="True"/>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="true" BorderColor="#288d52" HeightRequest="58" WidthRequest="58" CornerRadius="28">
+                <Image Source="lock.png" HeightRequest="20" WidthRequest="20"/>
+            </Frame>
+            <Frame Padding="0" Margin="-35,0,0,0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                <handlers:Borderless x:Name="passwordConfirmationEntry" VerticalOptions="Center" Margin="40,0,0,0" Placeholder="Confirm Password" PlaceholderColor="#236738" TextColor="Black" IsPassword="True"/>
+            </Frame>
+        </StackLayout>
+
+        <!-- Buttons -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button Text="Confirm" Clicked="Confirm_Clicked" BackgroundColor="#288d52" TextColor="White" WidthRequest="120" HeightRequest="50" CornerRadius="10" Margin="5"/>
+            <Button Text="Cancel" Clicked="Cancel_Clicked" BackgroundColor="#c62828" TextColor="White" WidthRequest="120" HeightRequest="50" CornerRadius="10" Margin="5"/>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

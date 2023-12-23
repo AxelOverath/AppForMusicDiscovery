@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MusicDiscoveryApp.SettingsPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#ede2b0">
+    <VerticalStackLayout Spacing="30" VerticalOptions="Center">
+
+
+        <Button Clicked="GoToSwipeFilter" Text="Swipe Filter" HeightRequest="65"  CornerRadius="30" WidthRequest="350" BackgroundColor="#2db36d"/>
+
+        <Button Clicked="GoToBlockArtist" Text="Block artists"  HeightRequest="65"  CornerRadius="30" WidthRequest="350" BackgroundColor="#2db36d"/>
+
+        <Button Clicked="GoToAccountDetais" Text="Acount Details" HeightRequest="65"  CornerRadius="30" WidthRequest="350" BackgroundColor="#2db36d"/>
+
+        <Button Clicked="Logout" Text="Logout"  HeightRequest="65"  CornerRadius="30" WidthRequest="350" BackgroundColor="#2db36d"/>
+
+        <Button Clicked="RemoveAccount" Text="Remove account" HeightRequest="65"  CornerRadius="30" WidthRequest="350" BackgroundColor="#FF0000"/>
+
+  
+    </VerticalStackLayout>
+</ContentPage>

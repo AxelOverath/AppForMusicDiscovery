@@ -6,7 +6,11 @@
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(ForgetPassword), typeof(ForgetPassword));
+            GoToLogin();
+        }
+        public async void GoToLogin()
+        {
+            await Navigation.PushAsync(new Login());
         }
     }
 }

@@ -1,5 +1,6 @@
-﻿using Microsoft.Maui.Platform;
+using Microsoft.Maui.Platform;
 using MusicDiscoveryApp.Handlers;
+using SpotifyAPI.Web;
 
 namespace MusicDiscoveryApp
 {
@@ -22,6 +23,8 @@ namespace MusicDiscoveryApp
             });
 
             MainPage = new AppShell();
-        }
+
+      }
+
     }
 }

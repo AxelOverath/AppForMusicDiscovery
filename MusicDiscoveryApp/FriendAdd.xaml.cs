@@ -10,16 +10,11 @@ public partial class FriendAdd : ContentPage
 
     private async void ArrowImage_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopAsync();
+        await Navigation.PushAsync(new FriendList());
     }
 
-    private void FriendRequests_Clicked(object sender, EventArgs e)
+    private async void FriendRequests_Clicked(object sender, EventArgs e)
     {
-        // TODO
-    }
-
-    private void AddFriends_Clicked(object sender, EventArgs e)
-    {
-        // TODO
+        await Navigation.PushAsync(new FriendRequests());
     }
 }

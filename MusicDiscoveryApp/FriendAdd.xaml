@@ -22,19 +22,18 @@
                         Clicked="FriendRequests_Clicked"
                         BackgroundColor="Transparent"
                         BorderColor="Transparent"
-                        TextColor="Black"
-                        FontAttributes="Bold"/>
+                        TextColor="Black"/>
 
                 <BoxView WidthRequest="1"
                          HeightRequest="25"
                          BackgroundColor="Black"/>
 
                 <Button Text="Add Friend"
-                        Clicked="AddFriends_Clicked"
                         BackgroundColor="Transparent"
                         BorderColor="Transparent"
                         TextColor="Black"
-                        FontAttributes="Bold"/>
+                        FontAttributes="Bold"
+                        FontSize="15"/>
             </HorizontalStackLayout>
 
             <BoxView WidthRequest="165"

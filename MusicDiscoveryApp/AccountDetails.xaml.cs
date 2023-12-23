@@ -75,6 +75,11 @@ namespace MusicDiscoveryApp
             }
         }
 
+        private async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SettingsPage());
+        }
+
         private bool IsValidEmail(string email)
         {
             try

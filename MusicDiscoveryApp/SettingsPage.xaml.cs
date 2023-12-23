@@ -7,7 +7,7 @@ public partial class SettingsPage : ContentPage
 	public SettingsPage()
 	{
 		InitializeComponent();
-	}
+    }
 
 
 	void GoToSwipeFilter(object sender, EventArgs e)
@@ -21,9 +21,9 @@ public partial class SettingsPage : ContentPage
 
     }
 
-    void GoToAccountDetais(object sender, EventArgs e)
+    async void GoToAccountDetais(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new AccountDetails());
     }
 
     async void Logout(object sender, EventArgs e)
@@ -32,9 +32,18 @@ public partial class SettingsPage : ContentPage
 
         if (action == "Yes")
         {
-            //de code om de conectie te breken
+            UserStorage.Clear();
+            if (Application.Current != null)
+            {
+                Application.Current.MainPage = new Login();
+            }
+        }
+        else
+        {
+            return;
         }
     }
+
 
     async void RemoveAccount(object sender, EventArgs e)
     {
@@ -44,9 +53,7 @@ public partial class SettingsPage : ContentPage
       
         if (action == "Yes")
         {
-            //Hier in dan zou de actie om de account te verwijderen moeten gebeuren. 
-
-
+            //Hier in dan zou de actie om de account te verwijderen moeten gebeuren.
         }
     }
 }

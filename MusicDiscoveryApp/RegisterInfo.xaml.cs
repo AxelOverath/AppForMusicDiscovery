@@ -57,7 +57,7 @@ namespace MusicDiscoveryApp
 
             await Database.UsersCollection.UpdateOneAsync(filter, update);
             UserStorage.storedUsername = username;
-            await Navigation.PushAsync(new Swipepage());
+            await Shell.Current.GoToAsync("//SpotifyCc");
         }
 
         private async Task<User> CheckIfUsernameExists(string username)

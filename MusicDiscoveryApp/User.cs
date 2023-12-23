@@ -13,4 +13,6 @@ public class User
     public DateTime DateOfBirth;
     public string? AccessToken;
     public string? RefreshToken;
+    public List<string>? Friends { get; set; }
+    public List<string>? FriendRequests { get; set; }
 }

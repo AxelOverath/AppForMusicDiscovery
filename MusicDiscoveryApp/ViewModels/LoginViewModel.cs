@@ -25,8 +25,6 @@ public partial class LoginViewModel : ViewModel
         await spotifyService.Initialize(code);
        
             await Navigation.NavigateTo("swipepage");
-        
-
     }
 
 }

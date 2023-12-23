@@ -5,7 +5,8 @@
              xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              xmlns:handlers="clr-namespace:MusicDiscoveryApp.Handlers"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#ede2b0">
+             BackgroundColor="#ede2b0"
+             Shell.TabBarIsVisible="False">
 
     <VerticalStackLayout Spacing="25"
                          Padding="20"
@@ -53,6 +54,7 @@
         <!-- Buttons -->
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
             <Button Text="Confirm" Clicked="Confirm_Clicked" BackgroundColor="#288d52" TextColor="White" WidthRequest="120" HeightRequest="50" CornerRadius="10" Margin="5"/>
+            <Button Text="Cancel" Clicked="Cancel_Clicked" BackgroundColor="#c62828" TextColor="White" WidthRequest="120" HeightRequest="50" CornerRadius="10" Margin="5"/>
         </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

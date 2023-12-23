@@ -1,7 +1,4 @@
-﻿//using System.Runtime.CompilerServices;
-//using Android.App.AppSearch;
-using MusicDiscoveryApp.Models;
-//using static Android.Provider.MediaStore.Audio;
+﻿using MusicDiscoveryApp.Models;
 
 namespace MusicDiscoveryApp.Services;
 
@@ -15,7 +12,6 @@ public class SpotifyService : ISpotifyService
     {
         this.secureStorageService = secureStorageService;
     }
-
 
     public async Task<bool> Initialize(string authCode)
     {

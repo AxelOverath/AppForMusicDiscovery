@@ -66,12 +66,38 @@ public partial class Swipepage : ContentPage
 
 
 
-    private void OnDislikeButtonClicked(object sender, EventArgs e)
+    private async void OnDislikeButtonClicked(object sender, EventArgs e)
     {
-        TrackImage.Source = "https://i.scdn.co/image/ab67616d0000b273a022feadbd7635c6cee11ef9";
-        SongName.Text = "Erop Of Eronder";
-        ArtistName.Text = "Pommelien Thijs";
-        AlbumName.Text = "Per Ongeluk";
+        // Make the API call to get a random song
+        ApiCalls.ApiResponse randomSongResponse = await ApiCalls.GetRandomSong();
+
+        // Find the first track with a preview URL
+        var selectedTrack = randomSongResponse?.Tracks?.FirstOrDefault(track => !string.IsNullOrEmpty(track.PreviewUrl));
+
+        while (selectedTrack == null)
+        {
+            // No track with a preview URL found, make another API call
+            randomSongResponse = await ApiCalls.GetRandomSong();
+            selectedTrack = randomSongResponse?.Tracks?.FirstOrDefault(track => !string.IsNullOrEmpty(track.PreviewUrl));
+        }
+
+        // Update the UI with the received information
+        TrackImage.Source = selectedTrack?.Album?.Images?[0]?.Url;
+        SongName.Text = selectedTrack?.Name;
+        ArtistName.Text = selectedTrack?.Artists?[0]?.Name;
+        AlbumName.Text = selectedTrack?.Album?.Name;
+
+        // Set the MediaElement source only if the track has a preview
+        if (!string.IsNullOrEmpty(selectedTrack.PreviewUrl))
+        {
+            mediaElement.Source = selectedTrack.PreviewUrl;
+
+        }
+        else
+        {
+            // Handle the case where there is no preview available
+            mediaElement.IsVisible = false;
+        }
     }
 
     private async void OnSwipeChanging(object sender, SwipeChangingEventArgs e)

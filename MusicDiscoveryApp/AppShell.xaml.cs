@@ -8,9 +8,15 @@
 
             GoToLogin();
         }
+
         public async void GoToLogin()
         {
             await Navigation.PushAsync(new Login());
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

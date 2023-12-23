@@ -33,10 +33,7 @@ public partial class SettingsPage : ContentPage
         if (action == "Yes")
         {
             UserStorage.Clear();
-            if (Application.Current != null)
-            {
-                Application.Current.MainPage = new Login();
-            }
+            await Navigation.PushAsync(new Login());
         }
         else
         {

@@ -3,8 +3,8 @@ namespace MusicDiscoveryApp;
 public partial class ChangerPassword : ContentPage
 {
 
-	private string _password;
-	private string _password2;
+	private string _password = "";
+	private string _password2 = "";
 	public ChangerPassword()
 	{
 		InitializeComponent();

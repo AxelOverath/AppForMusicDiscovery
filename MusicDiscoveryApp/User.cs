@@ -15,4 +15,7 @@ public class User
     public string? RefreshToken;
     public List<string>? Friends { get; set; }
     public List<string>? FriendRequests { get; set; }
+    public List<string>? LikedSongs { get; set; }
+
+    public List<string>? DislikedSongs { get; set; }
 }

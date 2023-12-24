@@ -16,6 +16,9 @@
         refreshToken = null;
         friends = null;
         friendRequests = null;
-    }
+
+}
+    public static string[]? likedSongs;
+    public static string[]? dislikedSongs;
 
 }

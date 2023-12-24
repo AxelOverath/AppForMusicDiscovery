@@ -45,7 +45,7 @@ public partial class Swipepage : ContentPage
         {
             //Like
 
-            SaveLikedSong();
+            // SaveLikedSong();
             GetNewSong();
         }
         else if (e.Offset < 0)
@@ -54,7 +54,7 @@ public partial class Swipepage : ContentPage
 
             GetNewSong();
         }
-        swipeView.Close();
+        
     }
 
     private void OnImageClicked(object sender, EventArgs e)
@@ -90,13 +90,13 @@ public partial class Swipepage : ContentPage
 
         // Update the UI with the received information
         TrackImage.Source = selectedTrack?.Album?.Images?[0]?.Url;
-        SongName.Text = selectedTrack?.Name;
-        ArtistName.Text = selectedTrack?.Artists?[0]?.Name;
-        AlbumName.Text = selectedTrack?.Album?.Name;
+        SongName.Text = "Title: " + selectedTrack?.Name;
+        ArtistName.Text = "Artist(s): " + selectedTrack?.Artists?[0]?.Name;
+        AlbumName.Text = "Album: " + selectedTrack?.Album?.Name;
         CurrentSongID = selectedTrack?.Id;
 
         // Set the MediaElement source only if the track has a preview
-        if (!string.IsNullOrWhiteSpace(selectedTrack.PreviewUrl))
+        if (!string.IsNullOrWhiteSpace(selectedTrack?.PreviewUrl))
         {
             mediaElement.Source = selectedTrack.PreviewUrl;
         }

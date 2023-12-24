@@ -58,9 +58,6 @@ public partial class LoginView
             var querystring = $"response_type=code&client_id={Constants.SpotifyClientId}&scopes={WebUtility.UrlEncode(scopes)}&redirect_uri={Constants.RedirectUrl}&state={state}";
 
             LoginWeb.Source = $"https://accounts.spotify.com/authorize?{querystring}";
-
-
-
             Login.TranslationY = this.Height;
             Login.IsVisible = true;
 
@@ -80,18 +77,18 @@ public partial class LoginView
             var code = parameters["code"];
             var returnState = parameters["state"];
 
-            if(returnState == state && !string.IsNullOrWhiteSpace(code))
+            if (returnState == state && !string.IsNullOrWhiteSpace(code))
             {
-                _= Task.Run(async () => await loginViewModel.HandleAuthCode(code));
+                _ = Task.Run(async () => await loginViewModel.HandleAuthCode(code));
 
 
-                 await Login.TranslateTo(Login.X, this.Height, easing: Easing.Linear);
+                await Login.TranslateTo(Login.X, this.Height, easing: Easing.Linear);
                 Login.IsVisible = false;
             }
-
-
         }
-
-
+    }
+    public async void GoToSwipe_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Swipepage());
     }
 }

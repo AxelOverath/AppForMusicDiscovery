@@ -6,14 +6,14 @@ public partial class LoginViewModel : ViewModel
     public LoginViewModel(ISpotifyService spotifyService)
     {
         this.spotifyService = spotifyService;
-       
+
     }
 
- 
+
 
     [ObservableProperty]
     private bool showLogin;
-  
+
 
     [RelayCommand]
     public void OpenLogin()
@@ -22,7 +22,7 @@ public partial class LoginViewModel : ViewModel
     }
     public async Task HandleAuthCode(string code)
     {
-         await spotifyService.Initialize(code);
+       await spotifyService.Initialize(code);
 
         
     }

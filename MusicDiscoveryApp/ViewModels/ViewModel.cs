@@ -8,7 +8,7 @@ namespace MusicDiscoveryApp.ViewModels
 {
     public abstract class ViewModel : TinyViewModel
     {
-        public ViewModel() 
+        public ViewModel()
         {
 
         }

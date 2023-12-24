@@ -1,7 +1,5 @@
-﻿//using System.Runtime.CompilerServices;
-//using Android.App.AppSearch;
+﻿using MongoDB.Driver;
 using MusicDiscoveryApp.Models;
-//using static Android.Provider.MediaStore.Audio;
 
 namespace MusicDiscoveryApp.Services;
 
@@ -14,9 +12,7 @@ public class SpotifyService : ISpotifyService
     public SpotifyService(ISecureStorageService secureStorageService)
     {
         this.secureStorageService = secureStorageService;
-        
     }
-
 
     public async Task<bool> Initialize(string authCode)
     {
@@ -48,8 +44,21 @@ public class SpotifyService : ISpotifyService
         await secureStorageService.Save(nameof(result.AccessToken), result.AccessToken);
         await secureStorageService.Save(nameof(result.RefreshToken), result.RefreshToken);
 
+        IMongoCollection<User> usersCollection = Database.UsersCollection;
 
-        return response.IsSuccessStatusCode;
+        var filter = Builders<User>.Filter.Eq(u => u.Email, UserStorage.storedEmail);
+
+        var update = Builders<User>.Update
+            .Set(u => u.AccessToken, accessToken)
+            .Set(u => u.RefreshToken, refreshToken);
+
+        var updateResult = await usersCollection.UpdateOneAsync(filter, update);
+
+        // Update successful
+        UserStorage.accessToken = accessToken;
+        UserStorage.refreshToken = refreshToken;
+
+        return true;
     }
 
 }

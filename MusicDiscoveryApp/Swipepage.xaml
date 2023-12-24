@@ -70,8 +70,8 @@
             </Image>
 
 
-            <toolkit:MediaElement x:Name="mediaElement" WidthRequest="400" HeightRequest="300" IsVisible="False" ShouldAutoPlay="True"
-                                  Source="https://p.scdn.co/mp3-preview/4342c3b6ed18bf2724a6242bf8107c9f908ba347?cid=11ff1648f7a6456fa310525943"/>
+            <toolkit:MediaElement x:Name="mediaElement" WidthRequest="400" HeightRequest="300" IsVisible="False" ShouldAutoPlay="True" Source=""/>
+
 
             <Label x:Name="SongName" Text="Erop Of Eronder" TextColor="#236738" FontAttributes="Bold" HorizontalOptions="End" Margin="15,5,15,0" FontSize="25"/>
             <Label x:Name="ArtistName" Text="Pommelien Thijs" TextColor="#236738" FontAttributes="Bold" Margin="15,5,15,0" FontSize="25"/>

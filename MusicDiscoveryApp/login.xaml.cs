@@ -1,5 +1,4 @@
 using MongoDB.Driver;
-
 namespace MusicDiscoveryApp;
 
 public partial class Login : ContentPage
@@ -7,32 +6,34 @@ public partial class Login : ContentPage
     public Login()
     {
         InitializeComponent();
-        Shell.SetTabBarIsVisible(this, false);
+        Shell.SetNavBarIsVisible(this, false);
     }
 
     public async void SignIn(object sender, EventArgs e)
     {
         string identifier = identifierInput.Text;
-        string password = passwordInput.Text;
 
-        if (identifier == null || password == null)
+        if (identifier == null || passwordInput.Text == null)
         {
             await DisplayAlert("Error", "Please enter both email and password.", "OK"); return;
         }
 
         var existingUser = await CheckIfUserExists(identifier);
 
-        if (existingUser != null && BCrypt.Net.BCrypt.Verify(password, existingUser.Password))
+        if (existingUser != null && BCrypt.Net.BCrypt.Verify(passwordInput.Text, existingUser.Password))
         {
+            UserStorage.storedUsername = existingUser.Username;
+            UserStorage.storedEmail = existingUser.Email;
             if (AnyUserInfoIsNull(existingUser))
             {
                 await Navigation.PushAsync(new RegisterInfo());
             }
             else
             {
-                UserStorage.storedUsername = existingUser.Username;
-                UserStorage.storedEmail = existingUser.Email;
-                await Navigation.PushAsync(new Swipepage());
+                ISecureStorageService secureStorageService = new SecureStorageService();
+                ISpotifyService spotifyService = new SpotifyService(secureStorageService);
+                var loginViewModel = new LoginViewModel(spotifyService);
+                await Navigation.PushAsync(new LoginView(loginViewModel));
             }
         }
         else
@@ -58,7 +59,7 @@ public partial class Login : ContentPage
             || user.DateOfBirth == default;
     }
 
-    async void GoToForgetPassword(object sender, EventArgs e)
+    public async void GoToForgetPassword(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new ForgetPassword());
     }

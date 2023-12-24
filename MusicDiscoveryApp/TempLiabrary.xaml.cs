@@ -1,123 +1,106 @@
-﻿namespace MusicDiscoveryApp;
+﻿using MongoDB.Driver;
 
-using Microsoft.Maui.Controls;
-
-public partial class TempLiabrary : ContentPage
+namespace MusicDiscoveryApp
 {
-    //AANmaken van list waar de songs in komen
-    //Voorbeeld SONGS
-    public TempLiabrary()
+    public partial class TempLiabrary : ContentPage
     {
-        InitializeComponent();
-
-        //SONG.clear
-
-        //Get all songsID's with username of client
-
-        //SONGS = Get all songs with ID
-
-        //foreach(song in songs)
-        //{
-        //    MakeNewSongDisplay(song.Cover, song.Title, song.Artist, song.Album, song.ID)
-        //}
-
-        //MakeNewSongDisplay(Cover, Title, Artist, Album)
-    }
-
-    private void MakeNewSongDisplay(string Cover,string Title, string Artist, string Album, string ID)
-    {
-        // Hoofdverticaal stacklayout met padding, breedte, hoogte en achtergrondkleur
-        VerticalStackLayout mainVerticalStackLayout = new()
+        public TempLiabrary()
         {
-            Padding = new Thickness(10),
-            WidthRequest = 210,
-            HeightRequest = 320,
-            BackgroundColor = Color.FromArgb("#2db36d")
-        };
+            InitializeComponent();
+            PopulateLibrary();
+        }
 
-        // Binnenste verticale stacklayout met een afbeelding
-        VerticalStackLayout innerVerticalStackLayout1 = [];
-        Image image1 = new() { Source = "https://i.imgur.com/fEGwJQl.png", WidthRequest = 125 };
-        innerVerticalStackLayout1.Children.Add(image1);
-
-        // Binnenste verticale stacklayout met een andere afbeelding en labels
-        VerticalStackLayout innerVerticalStackLayout2 = new()
+        private async void PopulateLibrary()
         {
-            VerticalOptions = LayoutOptions.Center
-        };
+            var currentUserUsername = UserStorage.storedUsername;
+            var currentUser = await GetUserByUsername(currentUserUsername);
 
-        Image coverImage = new() { Source = Cover, HeightRequest = 135, WidthRequest = 130 };
-
-
-        VerticalStackLayout labelStackLayout = new()
-        {
-            Spacing = 10,
-            Padding = new Thickness(15, 0, 0, 0)
-        };
-
-        Label songNameLabel = new() { Text = Title, HorizontalOptions = LayoutOptions.Center };
-        Label artistLabel = new() { Text = Artist, HorizontalOptions = LayoutOptions.Center };
-        Label albumLabel = new() { Text = Album, HorizontalOptions = LayoutOptions.Center };
-
-        labelStackLayout.Children.Add(songNameLabel);
-        labelStackLayout.Children.Add(artistLabel);
-        labelStackLayout.Children.Add(albumLabel);
-
-        innerVerticalStackLayout2.Children.Add(coverImage);
-        innerVerticalStackLayout2.Children.Add(labelStackLayout);
-
-        // Voeg de binnenste stacklayouts toe aan de hoofdstacklayout
-        mainVerticalStackLayout.Children.Add(innerVerticalStackLayout1);
-        mainVerticalStackLayout.Children.Add(innerVerticalStackLayout2);
-
-        // Voeg drie knoppen toe onder de labels naast elkaar
-        HorizontalStackLayout buttonStackLayout = new HorizontalStackLayout
-        {
-            Spacing = 10,
-            Padding = new Thickness(15, 0, 0, 0)
-        };
-
-        Button button1 = new() { Text = "▶️", BackgroundColor = Color.FromArgb("#2db36d"), AutomationId = ID };
-        Button button2 = new() { Text = "💾", BackgroundColor = Color.FromArgb("#2db36d"), AutomationId = ID };
-        Button button3 = new() { Text = "❌", BackgroundColor = Color.FromArgb("#2db36d"), AutomationId = ID };
-
-        button1.Clicked += (s, e) =>
-        {
-            if (mediaElement.CurrentState == CommunityToolkit.Maui.Core.Primitives.MediaElementState.Playing)
+            foreach (var song in currentUser.LikedSongs)
             {
-                mediaElement.Pause();
+                var songDetails = await ApiCalls.GetSongDetails(song);
+                if (songDetails != null)
+                {
+                    DisplaySongDetails(songDetails.CoverUrl, songDetails.Title, songDetails.Artist, songDetails.Album, song);
+                }
             }
-                
-            else if (mediaElement.CurrentState == CommunityToolkit.Maui.Core.Primitives.MediaElementState.Paused)
+        }
+
+        private async Task<User?> GetUserByUsername(string username)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u.Username, username);
+            var user = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
+            return user;
+        }
+
+        private void DisplaySongDetails(string Cover, string Title, string Artist, string Album, string ID)
+        {
+            var mainVerticalStackLayout = new StackLayout
             {
-                //foreach(song in songs)
-                //{
-                //    if(song.ID == button1.AutomationId)
-                //    {
-                //        mediaElement.Source = song.urlsong
-                          mediaElement.Play();
-                //    }
-                //}
-            }
-        };
+                Padding = new Thickness(10),
+                WidthRequest = 210,
+                HeightRequest = 320,
+                BackgroundColor = Color.FromHex("#2db36d")
+            };
 
-        button2.Clicked += (s, e) =>
-        {
-            //sent to spotify playlist
-        };
+            var coverImage = new Image
+            {
+                Source = Cover,
+                HeightRequest = 135,
+                WidthRequest = 130
+            };
 
-        button3.Clicked += (s, e) =>
-        {
-            //remove song uit db en reload this page
-        };
+            var songNameLabel = new Label { Text = Title, HorizontalOptions = LayoutOptions.Center };
+            var artistLabel = new Label { Text = Artist, HorizontalOptions = LayoutOptions.Center };
+            var albumLabel = new Label { Text = Album, HorizontalOptions = LayoutOptions.Center };
 
-        buttonStackLayout.Children.Add(button1);
-        buttonStackLayout.Children.Add(button2);
-        buttonStackLayout.Children.Add(button3);
+            var labelStackLayout = new StackLayout
+            {
+                Spacing = 10,
+                Padding = new Thickness(15, 0, 0, 0)
+            };
 
-        mainVerticalStackLayout.Children.Add(buttonStackLayout);
+            labelStackLayout.Children.Add(songNameLabel);
+            labelStackLayout.Children.Add(artistLabel);
+            labelStackLayout.Children.Add(albumLabel);
 
-        // Voeg de hoofdstacklayout toe aan de Content van de ContentPage
-        Content = mainVerticalStackLayout;
+            var buttonStackLayout = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                Spacing = 10,
+                Padding = new Thickness(15, 0, 0, 0)
+            };
+
+            var playButton = new Button { Text = "▶️", BackgroundColor = Color.FromHex("#2db36d"), AutomationId = ID };
+            var saveButton = new Button { Text = "💾", BackgroundColor = Color.FromHex("#2db36d"), AutomationId = ID };
+            var deleteButton = new Button { Text = "❌", BackgroundColor = Color.FromHex("#2db36d"), AutomationId = ID };
+
+            playButton.Clicked += (s, e) =>
+            {
+                // Play or pause logic
+            };
+
+            saveButton.Clicked += (s, e) =>
+            {
+                // Save logic
+            };
+
+            deleteButton.Clicked += (s, e) =>
+            {
+                // Delete logic
+            };
+
+            buttonStackLayout.Children.Add(playButton);
+            buttonStackLayout.Children.Add(saveButton);
+            buttonStackLayout.Children.Add(deleteButton);
+
+            var innerVerticalStackLayout = new StackLayout();
+            innerVerticalStackLayout.Children.Add(coverImage);
+            innerVerticalStackLayout.Children.Add(labelStackLayout);
+
+            mainVerticalStackLayout.Children.Add(innerVerticalStackLayout);
+            mainVerticalStackLayout.Children.Add(buttonStackLayout);
+
+            SongsContainer.Children.Add(mainVerticalStackLayout);
+        }
     }
 }

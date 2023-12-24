@@ -65,7 +65,9 @@ public partial class Signup : ContentPage
             Email = email,
             Password = hashedPassword,
             Friends = [],
-            FriendRequests = []
+            FriendRequests = [],
+            LikedSongs = [],
+            DislikedSongs = []
         });
 
         await Navigation.PushAsync(new RegisterInfo());

@@ -188,6 +188,79 @@ namespace MusicDiscoveryApp
             public List<string> Genres { get; set; }
         }
 
+        public static async Task<bool> SaveSongToSpotifyLibrary(string trackId)
+        {
+            // Replace with the appropriate API endpoint for saving a track to the user's library
+            string apiUrl = $"https://api.spotify.com/v1/me/tracks?ids={trackId}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {UserStorage.accessToken}");
+
+                HttpResponseMessage response = await client.PutAsync(apiUrl, null);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Song saved to library successfully.");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                    string errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error Response: {errorResponse}");
+
+                    return false;
+                }
+            }
+        }
+
+        public static async Task<TrackDetails> GetSongDetails(string songId)
+        {
+            string apiUrl = $"https://api.spotify.com/v1/tracks/{songId}";
+
+            using (HttpClient client = new())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {UserStorage.accessToken}");
+
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonContent = await response.Content.ReadAsStringAsync();
+
+                    // Use Newtonsoft.Json.JsonConvert to deserialize the JSON string
+                    Track track = JsonConvert.DeserializeObject<Track>(jsonContent);
+
+                    // Extract required details from the track
+                    TrackDetails details = new TrackDetails
+                    {
+                        CoverUrl = track?.Album?.Images?.FirstOrDefault()?.Url,
+                        Title = track?.Name,
+                        Artist = track?.Artists?.FirstOrDefault()?.Name,
+                        Album = track?.Album?.Name
+                    };
+
+                    return details;
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                    string errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error Response: {errorResponse}");
+
+                    return null;
+                }
+            }
+        }
+
+        public class TrackDetails
+        {
+            public string CoverUrl { get; set; }
+            public string Title { get; set; }
+            public string Artist { get; set; }
+            public string Album { get; set; }
+        }
 
     }
 }

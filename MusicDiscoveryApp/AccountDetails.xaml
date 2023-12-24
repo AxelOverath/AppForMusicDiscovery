@@ -5,7 +5,8 @@
              xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              xmlns:handlers="clr-namespace:MusicDiscoveryApp.Handlers"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#ede2b0">
+             BackgroundColor="#ede2b0"
+             Shell.TabBarIsVisible="False">
 
     <VerticalStackLayout Spacing="25"
                          Padding="20"

@@ -76,11 +76,11 @@ namespace MusicDiscoveryApp
             }
         }
 
-        async void Cancel_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync(); // Navigate back to the previous page (SettingsPage)
-        }
 
+        private async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SettingsPage());
+        }
 
         private bool IsValidEmail(string email)
         {

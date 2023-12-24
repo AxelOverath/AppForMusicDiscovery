@@ -16,22 +16,27 @@ namespace MusicDiscoveryApp
         {
             InitializeComponent();
             Shell.SetTabBarIsVisible(this, false);
+
             // Populate the Picker with country names
-            PopulateCountryPicker();
+            //PopulateCountryPicker();
+
             DOBEntry.Date = new DateTime(2000, 1, 1);
             DOBEntry.MinimumDate = new DateTime(1900, 1, 1);
             DOBEntry.MaximumDate = DateTime.Now.AddYears(-3);
-            userEmail = UserStorage.storedEmail;
+            if (UserStorage.storedEmail != null)
+            {
+                userEmail = UserStorage.storedEmail;
+            }
         }
 
-        public async void GoToSwipePage_Clicked(object sender, EventArgs e)
+        public async void GoToSwipe_Clicked(object sender, EventArgs e)
         {
             string firstName = firstNameEntry.Text;
             string lastName = lastNameEntry.Text;
             string username = usernameEntry.Text;
             DateTime dateOfBirth = DOBEntry.Date;
 
-            if (firstName == null || lastName == null || username == null)
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(username))
             {
                 await DisplayAlert("Error", "Please fill in all fields.", "OK");
                 return;
@@ -49,11 +54,14 @@ namespace MusicDiscoveryApp
                 .Set(u => u.FirstName, firstName)
                 .Set(u => u.LastName, lastName)
                 .Set(u => u.Username, username)
-                .Set(u => u.DateOfBirth, dateOfBirth);
+                .Set(u => u.DateOfBirth, dateOfBirth)
+                .Set(u => u.Friends, new List<string>())
+                .Set(u => u.FriendRequests, new List<string>());
 
             await Database.UsersCollection.UpdateOneAsync(filter, update);
             UserStorage.storedUsername = username;
             await Navigation.PushAsync(new Swipepage());
+            //await Shell.Current.GoToAsync("//SpotifyCc");
         }
 
         private async Task<User> CheckIfUsernameExists(string username)
@@ -62,8 +70,9 @@ namespace MusicDiscoveryApp
             var existingUser = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
             return existingUser;
         }
+
         
-        private void PopulateCountryPicker()
+      /* private void PopulateCountryPicker()
         {
             // Get all countries using CultureInfo
             CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
@@ -86,7 +95,8 @@ namespace MusicDiscoveryApp
             {
                 CountryPicker.Items.Add(countryName);
             }
-        }
+        }*/
+
 
     }
 }

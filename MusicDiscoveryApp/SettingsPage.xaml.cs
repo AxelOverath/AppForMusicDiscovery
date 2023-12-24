@@ -8,6 +8,7 @@ public partial class SettingsPage : ContentPage
 	public SettingsPage()
 	{
 		InitializeComponent();
+
         Shell.SetTabBarIsVisible(this, false);
 
     }
@@ -35,10 +36,17 @@ public partial class SettingsPage : ContentPage
 
         if (action == "Yes")
         {
-            //de code om de conectie te breken
+=
+            UserStorage.Clear();
             await Navigation.PushAsync(new Login());
         }
+        else
+        {
+            return;
+
+        }
     }
+
 
     async void RemoveAccount(object sender, EventArgs e)
     {
@@ -48,6 +56,7 @@ public partial class SettingsPage : ContentPage
       
         if (action == "Yes")
         {
+
             //Hier in dan zou de actie om de account te verwijderen moeten gebeuren. 
 
             string usernameToRemove = UserStorage.storedUsername; 
@@ -74,6 +83,7 @@ public partial class SettingsPage : ContentPage
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"Error removing account: {ex.Message}", "OK");
+
         }
     }
 }

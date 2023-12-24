@@ -1,3 +1,5 @@
+using MongoDB.Driver;
+
 namespace MusicDiscoveryApp;
 
 public partial class Swipepage : ContentPage
@@ -6,6 +8,7 @@ public partial class Swipepage : ContentPage
     public Swipepage()
     {
         InitializeComponent();
+        GetNewSong();
     }
 
     private void OnButtonPressed(object sender, EventArgs e)
@@ -37,6 +40,7 @@ public partial class Swipepage : ContentPage
     private void OnDislikeButtonClicked(object sender, EventArgs e)
     {
         GetNewSong();
+        SaveDislikedSong();
     }
 
     private void OnSwipeChanging(object sender, SwipeChangingEventArgs e)
@@ -65,10 +69,36 @@ public partial class Swipepage : ContentPage
             mediaElement.Play();
     }
 
-    private void SaveLikedSong()
+    private async void SaveLikedSong()
     {
-        //Sent id from song and username of client
-        //CurrentSongID;
+        var currentUser = await GetUserByUsername(UserStorage.storedUsername);
+        currentUser.LikedSongs.Add(CurrentSongID); // Add the song ID to LikedSongs
+
+        // Update current user's information in the database
+        var filterCurrentUser = Builders<User>.Filter.Eq(u => u.Username, currentUser.Username);
+        var updateCurrentUser = Builders<User>.Update.Set(u => u.LikedSongs, currentUser.LikedSongs);
+
+        await Database.UsersCollection.UpdateOneAsync(filterCurrentUser, updateCurrentUser);
+    }
+
+    private async void SaveDislikedSong()
+    {
+        var currentUser = await GetUserByUsername(UserStorage.storedUsername);
+
+        currentUser.DislikedSongs.Add(CurrentSongID); // Add the song ID to LikedSongs
+
+        // Update current user's information in the database
+        var filterCurrentUser = Builders<User>.Filter.Eq(u => u.Username, currentUser.Username);
+        var updateCurrentUser = Builders<User>.Update.Set(u => u.DislikedSongs, currentUser.DislikedSongs);
+
+        await Database.UsersCollection.UpdateOneAsync(filterCurrentUser, updateCurrentUser);
+    }
+
+    private async Task<User?> GetUserByUsername(string username)
+    {
+        var filter = Builders<User>.Filter.Eq(u => u.Username, username);
+        var user = await Database.UsersCollection.Find(filter).FirstOrDefaultAsync();
+        return user;
     }
 
     private async void GetNewSong()

@@ -6,8 +6,8 @@
     public static string? refreshToken;
     public static string[]? friends;
     public static string[]? friendRequests;
-
-
+    public static string[]? likedSongs;
+    public static string[]? dislikedSongs;
     public static void Clear()
     {
         storedEmail = null;
@@ -16,6 +16,8 @@
         refreshToken = null;
         friends = null;
         friendRequests = null;
+        likedSongs = null;
+        dislikedSongs = null;
     }
 
 }

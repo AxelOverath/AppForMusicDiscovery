@@ -6,11 +6,11 @@
         {
             InitializeComponent();
 
-            GoToLogin();
+            //GoToLogin();
         }
-        public async void GoToLogin()
-        {
-            await Navigation.PushAsync(new Login());
-        }
+        //public async void GoToLogin()
+        //{
+        //    await Navigation.PushAsync(new Login());
+        //}
     }
 }

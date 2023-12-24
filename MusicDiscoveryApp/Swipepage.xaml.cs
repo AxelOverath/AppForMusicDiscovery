@@ -8,6 +8,7 @@ public partial class Swipepage : ContentPage
     public Swipepage()
     {
         InitializeComponent();
+        
     }
 
     private void OnButtonPressed(object sender, EventArgs e)
@@ -74,17 +75,19 @@ public partial class Swipepage : ContentPage
 
     private async void GetNewSong()
     {
+        int i = 0;
         // Make the API call to get a random song
         ApiCalls.ApiResponse randomSongResponse = await ApiCalls.GetRandomSong();
 
         // Find the first track with a preview URL
         var selectedTrack = randomSongResponse?.Tracks?.FirstOrDefault(track => !string.IsNullOrEmpty(track.PreviewUrl));
 
-        while (selectedTrack == null)
+        while (selectedTrack == null && i != 5)
         {
             // No track with a preview URL found, make another API call
             randomSongResponse = await ApiCalls.GetRandomSong();
             selectedTrack = randomSongResponse?.Tracks?.FirstOrDefault(track => !string.IsNullOrEmpty(track.PreviewUrl));
+            i++;
         }
 
         // Update the UI with the received information

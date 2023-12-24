@@ -115,11 +115,17 @@ namespace MusicDiscoveryApp
 
         public static async Task<ApiCalls.ApiResponse> GetRandomSong()
         {
+            // Get a random genre
+            string randomGenre = await GetRandomGenre();
 
-
+            if (randomGenre == null)
+            {
+                Console.WriteLine("Failed to obtain a random genre.");
+                return null;
+            }
 
             // Replace with the appropriate API endpoint for getting a random song
-            string apiUrl = "https://api.spotify.com/v1/recommendations?limit=1&market=BE&seed_genres=country";
+            string apiUrl = $"https://api.spotify.com/v1/recommendations?limit=1&market=BE&seed_genres={randomGenre}";
 
             // Make the API call to get a random song
             ApiCalls.ApiResponse response = await MakeSpotifyApiRequest(apiUrl, UserStorage.accessToken);
@@ -127,6 +133,7 @@ namespace MusicDiscoveryApp
             // Return the API response
             return response;
         }
+
 
 
         static async Task<ApiResponse> MakeSpotifyApiRequest(string apiUrl, string accessToken)
@@ -160,6 +167,57 @@ namespace MusicDiscoveryApp
                 }
             }
         }
+
+        public static async Task<string> GetRandomGenre()
+        {
+            string genreApiUrl = "https://api.spotify.com/v1/recommendations/available-genre-seeds";
+
+            using (HttpClient client = new HttpClient())
+            {
+                // Set up the Spotify API authorization header
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {UserStorage.accessToken}"); // Replace YOUR_ACCESS_TOKEN with your Spotify access token
+
+                HttpResponseMessage response = await client.GetAsync(genreApiUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string genreJson = await response.Content.ReadAsStringAsync();
+
+                    // Use Newtonsoft.Json.JsonConvert to deserialize the JSON string
+                    var genreResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<GenreResponse>(genreJson);
+
+                    if (genreResponse != null && genreResponse.Genres != null && genreResponse.Genres.Count > 0)
+                    {
+                        // Pick a random genre from the list
+                        Random random = new Random();
+                        int randomIndex = random.Next(genreResponse.Genres.Count);
+                        string randomGenre = genreResponse.Genres[randomIndex];
+
+                        return randomGenre;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Unable to parse genre response.");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                    string errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error Response: {errorResponse}");
+
+                    return null;
+                }
+            }
+        }
+
+        // Define a class to represent the structure of the Spotify API response
+        public class GenreResponse
+        {
+            public List<string> Genres { get; set; }
+        }
+
 
     }
 }

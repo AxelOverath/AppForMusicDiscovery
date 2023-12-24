@@ -5,15 +5,16 @@
              xmlns:mvvm="clr-namespace:TinyMvvm;assembly=TinyMvvm.Maui"
              x:DataType="vm:LoginViewModel"
              x:Class="MusicDiscoveryApp.Views.LoginView"
-             Shell.TabBarIsVisible="False">
+             Shell.TabBarIsVisible="False"
+               BackgroundColor="#ede2b0">
     <Grid>
+        <Image Source="https://i.imgur.com/t3tWwVE.png" VerticalOptions="Start" HorizontalOptions="Center" Margin="50,270"/>
 
         <Button Text="Login to Spotify"
                 Command="{Binding OpenLoginCommand}"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" WidthRequest="220" Margin="40" BackgroundColor="#2db36d"  />
 
-        <Button Text="Continue" Clicked="GoToSwipe_Clicked" VerticalOptions="End" HorizontalOptions="Center" />
+        <Button Text="Continue" Clicked="GoToSwipe_Clicked" HorizontalOptions="Center" VerticalOptions="End" CornerRadius="20" WidthRequest="120" Margin="40" BackgroundColor="#2db36d"  />
     
         <Frame x:Name="Login" IsVisible="False" CornerRadius="10" BorderColor="Black" Padding="0">
             <WebView x:Name="LoginWeb" />

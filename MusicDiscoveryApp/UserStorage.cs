@@ -1,4 +1,4 @@
-﻿internal class UserStorage
+internal class UserStorage
 {
     public static string? storedEmail;
     public static string? storedUsername;
@@ -8,6 +8,7 @@
     public static string[]? friendRequests;
     public static string[]? likedSongs;
     public static string[]? dislikedSongs;
+
     public static void Clear()
     {
         storedEmail = null;
@@ -19,5 +20,4 @@
         likedSongs = null;
         dislikedSongs = null;
     }
-
 }

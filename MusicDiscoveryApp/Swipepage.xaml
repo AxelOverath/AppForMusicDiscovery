@@ -5,87 +5,67 @@
              x:Class="MusicDiscoveryApp.Swipepage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="#ede2b0">
-    <SwipeView x:Name="swipeView" SwipeChanging="OnSwipeChanging">
-        <SwipeView.LeftItems>
-            <SwipeItems>
-                <SwipeItem Text="✖" BackgroundColor="#ede2b0" Command="{Binding DislikeCommand}"/>
-            </SwipeItems>
-        </SwipeView.LeftItems>
 
-        <SwipeView.RightItems>
-            <SwipeItems>
-                <SwipeItem Text="♡" BackgroundColor="#ede2b0" Command="{Binding LikeCommand}" />
-            </SwipeItems>
-        </SwipeView.RightItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <ScrollView>
-            
-        <VerticalStackLayout>
+        <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button Text="For You" x:Name="ForYouButton" Clicked="OnForYouButtonClicked" Pressed="OnButtonPressed" BackgroundColor="Transparent" BorderColor="Transparent" TextColor="#236738" FontAttributes="Bold"/>
+            <BoxView WidthRequest="1" HeightRequest="25" BackgroundColor="#236738" />
+            <Button Text="Random" x:Name="RandomButton" Clicked="OnRandomButtonClicked" Pressed="OnButtonPressed" BackgroundColor="Transparent" BorderColor="Transparent" TextColor="#236738" FontAttributes="Bold"/>
+        </StackLayout>
 
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+        <SwipeView x:Name="swipeView" SwipeChanging="OnSwipeChanging" Grid.Row="1">
 
-                <Button
-                    Text="For You"
-                    x:Name="ForYouButton"
-                    Clicked="OnForYouButtonClicked"
-                    Pressed="OnButtonPressed"
-                    BackgroundColor="Transparent"
-                    BorderColor="Transparent"
-                    TextColor="#236738" 
-                    FontAttributes="Bold"/>
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItem Text="✖" BackgroundColor="#ede2b0" Command="{Binding DislikeCommand}"/>
+                </SwipeItems>
+            </SwipeView.LeftItems>
 
-                <BoxView
-                    WidthRequest="1"
-                    HeightRequest="25"
-                    BackgroundColor="#236738" />
+            <SwipeView.RightItems>
+                <SwipeItems>
+                    <SwipeItem Text="♡" BackgroundColor="#ede2b0" Command="{Binding LikeCommand}" />
+                </SwipeItems>
+            </SwipeView.RightItems>
 
-                <Button
-                    Text="Random"
-                    x:Name="RandomButton"
-                    Clicked="OnRandomButtonClicked"
-                    Pressed="OnButtonPressed"
-                    BackgroundColor="Transparent"
-                    BorderColor="Transparent"
-                    TextColor="#236738"
-                    FontAttributes="Bold"/>
-            </HorizontalStackLayout>
+            <ScrollView>
+                <VerticalStackLayout>
+                    <Image Margin="10"
+                        Source="https://i.imgur.com/t3tWwVE.png"
+                        HorizontalOptions="Center"
+                        BackgroundColor="Transparent"
+                        WidthRequest="100">
+                    </Image>
 
-            <Image
-                Source="https://i.imgur.com/t3tWwVE.png"
-                HorizontalOptions="Center"
-                BackgroundColor="Transparent"
-                WidthRequest="100">
-            </Image>
+                    <Image
+                        x:Name="TrackImage"
+                        Source="https://i.scdn.co/image/ab67616d0000b273a022feadbd7635c6cee11ef9"
+                        Aspect="AspectFit"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        Margin="15,0,15,10">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnImageClicked"/>
+                        </Image.GestureRecognizers>
+                    </Image>
 
+                    <toolkit:MediaElement x:Name="mediaElement" WidthRequest="400" HeightRequest="300" IsVisible="False" ShouldAutoPlay="True" Source=""/>
 
-            <Image
-                x:Name="TrackImage"
-                Source="https://i.scdn.co/image/ab67616d0000b273a022feadbd7635c6cee11ef9"
-                Aspect="AspectFit"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="CenterAndExpand"
-                Margin="15,0,15,10">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Tapped="OnImageClicked"/>
-                </Image.GestureRecognizers>
-            </Image>
+                    <Label x:Name="SongName" Text="Erop Of Eronder" TextColor="#236738" FontAttributes="Bold"  Margin="15,5,15,0" FontSize="25"/>
+                    <Label x:Name="ArtistName" Text="Pommelien Thijs" TextColor="#236738" FontAttributes="Bold" Margin="15,5,15,0" FontSize="25"/>
+                    <Label x:Name="AlbumName" Text="Per Ongeluk" TextColor="#236738" FontAttributes="Bold" Margin="15,10,5,0" FontSize="25"/>
 
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="90" Margin="30">
+                        <Button Text="✖" Clicked="OnDislikeButtonClicked" BackgroundColor="Red" TextColor="White" FontFamily="FontAwesome" FontSize="36" CornerRadius="50" WidthRequest="100" HeightRequest="100"/>
+                        <Button Text="♡" Clicked="OnLikeButtonClicked" BackgroundColor="Green" TextColor="White" FontFamily="FontAwesome" FontSize="36" CornerRadius="50" WidthRequest="100" HeightRequest="100"/>
+                    </StackLayout>
+                </VerticalStackLayout>
+            </ScrollView>
 
-            <toolkit:MediaElement x:Name="mediaElement" WidthRequest="400" HeightRequest="300" IsVisible="False" ShouldAutoPlay="True" Source=""/>
-
-
-            <Label x:Name="SongName" Text="Erop Of Eronder" TextColor="#236738" FontAttributes="Bold" HorizontalOptions="End" Margin="15,5,15,0" FontSize="25"/>
-            <Label x:Name="ArtistName" Text="Pommelien Thijs" TextColor="#236738" FontAttributes="Bold" Margin="15,5,15,0" FontSize="25"/>
-            <Label x:Name="AlbumName" Text="Per Ongeluk" TextColor="#236738" FontAttributes="Bold" Margin="15,10,5,0" FontSize="25"/>
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="90" Margin="30">
-                <Button Text="✖" Clicked="OnDislikeButtonClicked" BackgroundColor="Red" TextColor="White" FontFamily="FontAwesome" FontSize="36" CornerRadius="50" WidthRequest="100" HeightRequest="100"/>
-                <Button Text="♡" Clicked="OnLikeButtonClicked" BackgroundColor="Green" TextColor="White" FontFamily="FontAwesome" FontSize="36" CornerRadius="50" WidthRequest="100" HeightRequest="100"/>
-            </StackLayout>
-        </VerticalStackLayout>
-
-        </ScrollView>
-
-    </SwipeView>
+        </SwipeView>
+    </Grid>
 </ContentPage>

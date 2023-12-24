@@ -7,6 +7,7 @@ public partial class Settings : ContentPage
 		InitializeComponent();
 	}
 
+
     public async void GoToSettingsPage(object sender, EventArgs e)
 	{
         await Navigation.PushAsync(new SettingsPage());

@@ -8,8 +8,9 @@ namespace MusicDiscoveryApp
         public AccountDetails()
         {
             InitializeComponent();
-            emailEntry.Text = UserStorage.storedEmail;
             usernameEntry.Text = UserStorage.storedUsername;
+            emailEntry.Text = UserStorage.storedEmail;
+            Shell.SetTabBarIsVisible(this, false);
         }
 
         private async void Confirm_Clicked(object sender, EventArgs e)
@@ -74,6 +75,7 @@ namespace MusicDiscoveryApp
                 await DisplayAlert("Error", "Failed to update account details.", "OK");
             }
         }
+
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {

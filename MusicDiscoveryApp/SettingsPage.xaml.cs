@@ -1,3 +1,4 @@
+using MongoDB.Driver;
 using System.Diagnostics;
 
 namespace MusicDiscoveryApp;
@@ -7,10 +8,13 @@ public partial class SettingsPage : ContentPage
 	public SettingsPage()
 	{
 		InitializeComponent();
+
+        Shell.SetTabBarIsVisible(this, false);
+
     }
 
 
-	void GoToSwipeFilter(object sender, EventArgs e)
+    void GoToSwipeFilter(object sender, EventArgs e)
 	{
 
 	}
@@ -32,12 +36,14 @@ public partial class SettingsPage : ContentPage
 
         if (action == "Yes")
         {
+=
             UserStorage.Clear();
             await Navigation.PushAsync(new Login());
         }
         else
         {
             return;
+
         }
     }
 
@@ -50,7 +56,34 @@ public partial class SettingsPage : ContentPage
       
         if (action == "Yes")
         {
-            //Hier in dan zou de actie om de account te verwijderen moeten gebeuren.
+
+            //Hier in dan zou de actie om de account te verwijderen moeten gebeuren. 
+
+            string usernameToRemove = UserStorage.storedUsername; 
+
+            // Call the method to remove the account from the database
+            await RemoveUserAsync(usernameToRemove);
+
+            await DisplayAlert("Success", "Account removed successfully.", "OK");
+
+            await Navigation.PushAsync(new Login());
+
+        }
+    }
+
+
+    private async Task RemoveUserAsync(string username)
+    {
+        try
+        {
+            // Assuming your User class has a property "Username"
+            var filter = Builders<User>.Filter.Eq(u => u.Username, username);
+            await Database.UsersCollection.DeleteOneAsync(filter);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"Error removing account: {ex.Message}", "OK");
+
         }
     }
 }

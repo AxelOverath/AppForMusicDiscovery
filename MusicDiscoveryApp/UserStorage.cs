@@ -7,12 +7,6 @@
     public static string[]? friends;
     public static string[]? friendRequests;
 
-    // Usage guide
-    // 
-    // UserStorage.storedEmail = emailEntry.Text;
-
-    // To get the userstorage into your object.
-    // usernameEntry.Text = UserStorage.storedUsername;
 
     public static void Clear()
     {
@@ -23,4 +17,5 @@
         friends = null;
         friendRequests = null;
     }
+
 }

@@ -14,7 +14,6 @@ public partial class LoginView
     public LoginView(LoginViewModel loginViewModel)
     {
         InitializeComponent();
-        Shell.SetTabBarIsVisible(this, false);
         this.loginViewModel = loginViewModel;
 
         BindingContext = loginViewModel;
@@ -59,9 +58,6 @@ public partial class LoginView
             var querystring = $"response_type=code&client_id={Constants.SpotifyClientId}&scopes={WebUtility.UrlEncode(scopes)}&redirect_uri={Constants.RedirectUrl}&state={state}";
 
             LoginWeb.Source = $"https://accounts.spotify.com/authorize?{querystring}";
-
-
-
             Login.TranslationY = this.Height;
             Login.IsVisible = true;
 
@@ -89,11 +85,7 @@ public partial class LoginView
                 await Login.TranslateTo(Login.X, this.Height, easing: Easing.Linear);
                 Login.IsVisible = false;
             }
-
-
         }
-
-
     }
     public async void GoToSwipe_Clicked(object sender, EventArgs e)
     {

@@ -5,8 +5,7 @@
              xmlns:mvvm="clr-namespace:TinyMvvm;assembly=TinyMvvm.Maui"
              x:DataType="vm:LoginViewModel"
              x:Class="MusicDiscoveryApp.Views.LoginView"
-             Shell.NavBarIsVisible="False"
-             Title="LoginView">
+             Shell.TabBarIsVisible="False">
     <Grid>
 
         <Button Text="Login to Spotify"

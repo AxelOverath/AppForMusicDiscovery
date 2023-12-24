@@ -1,10 +1,14 @@
+using CommunityToolkit.Maui.Views;
+
 namespace MusicDiscoveryApp;
 
 public partial class Swipepage : ContentPage
 {
+    private string CurrentSongID;
     public Swipepage()
     {
         InitializeComponent();
+        
     }
 
     private void OnButtonPressed(object sender, EventArgs e)
@@ -27,37 +31,29 @@ public partial class Swipepage : ContentPage
         DisplayAlert("Random Clicked", "You clicked the 'Random' button!", "OK");
     }
 
-    private void OnLikeButtonClicked(object sender, EventArgs e)
+    private async void OnLikeButtonClicked(object sender, EventArgs e)
     {
-        TrackImage.Source = "https://i.scdn.co/image/ab67616d0000b2734718e2b124f79258be7bc452";
-        SongName.Text = "Party Monster";
-        ArtistName.Text = "The Weeknd";
-        AlbumName.Text = "Starboy (Deluxe)";
+        SaveLikedSong();
+        GetNewSong();
     }
 
-    private void OnDislikeButtonClicked(object sender, EventArgs e)
+    private async void OnDislikeButtonClicked(object sender, EventArgs e)
     {
-        TrackImage.Source = "https://i.scdn.co/image/ab67616d0000b273a022feadbd7635c6cee11ef9";
-        SongName.Text = "Erop Of Eronder";
-        ArtistName.Text = "Pommelien Thijs";
-        AlbumName.Text = "Per Ongeluk";
+        GetNewSong();
     }
 
-    private void OnSwipeChanging(object sender, SwipeChangingEventArgs e)
+    private async void OnSwipeChanging(object sender, SwipeChangingEventArgs e)
     {
         if (e.Offset > 0)
         {
-            TrackImage.Source = "https://i.scdn.co/image/ab67616d0000b2734718e2b124f79258be7bc452";
-            SongName.Text = "Party Monster";
-            ArtistName.Text = "The Weeknd";
-            AlbumName.Text = "Starboy (Deluxe)";
+            //Like
+            SaveLikedSong();
+            GetNewSong();
         }
         else if (e.Offset < 0)
         {
-            TrackImage.Source = "https://i.scdn.co/image/ab67616d0000b273a022feadbd7635c6cee11ef9";
-            SongName.Text = "Erop Of Eronder";
-            ArtistName.Text = "Pommelien Thijs";
-            AlbumName.Text = "Per Ongeluk";
+            //Dislike
+            GetNewSong();
         }
         swipeView.Close();
     }
@@ -68,5 +64,48 @@ public partial class Swipepage : ContentPage
             mediaElement.Pause();
         else if (mediaElement.CurrentState == CommunityToolkit.Maui.Core.Primitives.MediaElementState.Paused)
             mediaElement.Play();
+    }
+
+    private void SaveLikedSong()
+    {
+        //Sent id from song and username of client
+        //The id is in CurrentSongID
+        CurrentSongID = CurrentSongID;
+    }
+
+    private async void GetNewSong()
+    {
+        int i = 0;
+        // Make the API call to get a random song
+        ApiCalls.ApiResponse randomSongResponse = await ApiCalls.GetRandomSong();
+
+        // Find the first track with a preview URL
+        var selectedTrack = randomSongResponse?.Tracks?.FirstOrDefault(track => !string.IsNullOrEmpty(track.PreviewUrl));
+
+        while (selectedTrack == null && i != 5)
+        {
+            // No track with a preview URL found, make another API call
+            randomSongResponse = await ApiCalls.GetRandomSong();
+            selectedTrack = randomSongResponse?.Tracks?.FirstOrDefault(track => !string.IsNullOrEmpty(track.PreviewUrl));
+            i++;
+        }
+
+        // Update the UI with the received information
+        TrackImage.Source = selectedTrack?.Album?.Images?[0]?.Url;
+        SongName.Text = selectedTrack?.Name;
+        ArtistName.Text = selectedTrack?.Artists?[0]?.Name;
+        AlbumName.Text = selectedTrack?.Album?.Name;
+        CurrentSongID = selectedTrack?.Id;
+
+        // Set the MediaElement source only if the track has a preview
+        if (!string.IsNullOrEmpty(selectedTrack.PreviewUrl))
+        {
+            mediaElement.Source = selectedTrack.PreviewUrl;
+        }
+        else
+        {
+            // Handle the case where there is no preview available
+            mediaElement.IsVisible = false;
+        }
     }
 }

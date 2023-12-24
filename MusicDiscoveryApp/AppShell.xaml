@@ -7,12 +7,17 @@
     xmlns:views="clr-namespace:MusicDiscoveryApp.Views">
 
 
-    <ShellContent
-
-        Title="Login"
-        ContentTemplate="{DataTemplate local:TempLiabrary}"
-        Route="LoginPage" />
-
-
+    <TabBar Shell.TabBarBackgroundColor="#288d52" Shell.TabBarUnselectedColor="White" Shell.TabBarForegroundColor="Aquamarine" >
+        <ShellContent 
+                  Icon="musicalnote.png"
+                  ContentTemplate="{DataTemplate local:Swipepage}" 
+                  Route="Swipepage"/>
+        <ShellContent Icon="book.png" 
+                      ContentTemplate="{DataTemplate local:Swipepage}"/> <!--TempLibrary-->
+        <ShellContent Icon="friends.png"
+                      ContentTemplate="{DataTemplate local:FriendList}"/>
+        <ShellContent Icon="settings.png"
+                      ContentTemplate="{DataTemplate local:Settings}"/>
+    </TabBar>
 </Shell>
 

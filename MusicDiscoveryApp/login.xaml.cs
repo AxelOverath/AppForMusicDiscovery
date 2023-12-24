@@ -1,5 +1,4 @@
 using MongoDB.Driver;
-
 namespace MusicDiscoveryApp;
 
 public partial class Login : ContentPage
@@ -7,7 +6,6 @@ public partial class Login : ContentPage
     public Login()
     {
         InitializeComponent();
-        Shell.SetTabBarIsVisible(this, false);
         Shell.SetNavBarIsVisible(this, false);
     }
 
@@ -32,8 +30,10 @@ public partial class Login : ContentPage
             }
             else
             {
-                await Navigation.PushAsync(new Swipepage());
-                //await Shell.Current.GoToAsync("//SpotifyCc");
+                ISecureStorageService secureStorageService = new SecureStorageService();
+                ISpotifyService spotifyService = new SpotifyService(secureStorageService);
+                var loginViewModel = new LoginViewModel(spotifyService);
+                await Navigation.PushAsync(new LoginView(loginViewModel));
             }
         }
         else

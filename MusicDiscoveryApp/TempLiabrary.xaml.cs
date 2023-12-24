@@ -1,9 +1,6 @@
 ﻿namespace MusicDiscoveryApp;
 
-using Amazon.Auth.AccessControlPolicy;
 using Microsoft.Maui.Controls;
-using System.Xml.Linq;
-using Windows.Devices.Midi;
 
 public partial class TempLiabrary : ContentPage
 {
@@ -30,37 +27,37 @@ public partial class TempLiabrary : ContentPage
     private void MakeNewSongDisplay(string Cover,string Title, string Artist, string Album, string ID)
     {
         // Hoofdverticaal stacklayout met padding, breedte, hoogte en achtergrondkleur
-        VerticalStackLayout mainVerticalStackLayout = new VerticalStackLayout
+        VerticalStackLayout mainVerticalStackLayout = new()
         {
             Padding = new Thickness(10),
             WidthRequest = 210,
             HeightRequest = 320,
-            BackgroundColor = Color.FromHex("#2db36d")
+            BackgroundColor = Color.FromArgb("#2db36d")
         };
 
         // Binnenste verticale stacklayout met een afbeelding
-        VerticalStackLayout innerVerticalStackLayout1 = new VerticalStackLayout();
-        Image image1 = new Image { Source = "https://i.imgur.com/fEGwJQl.png", WidthRequest = 125 };
+        VerticalStackLayout innerVerticalStackLayout1 = [];
+        Image image1 = new() { Source = "https://i.imgur.com/fEGwJQl.png", WidthRequest = 125 };
         innerVerticalStackLayout1.Children.Add(image1);
 
         // Binnenste verticale stacklayout met een andere afbeelding en labels
-        VerticalStackLayout innerVerticalStackLayout2 = new VerticalStackLayout
+        VerticalStackLayout innerVerticalStackLayout2 = new()
         {
             VerticalOptions = LayoutOptions.Center
         };
 
-        Image coverImage = new Image { Source = Cover, HeightRequest = 135, WidthRequest = 130 };
+        Image coverImage = new() { Source = Cover, HeightRequest = 135, WidthRequest = 130 };
 
 
-        VerticalStackLayout labelStackLayout = new VerticalStackLayout
+        VerticalStackLayout labelStackLayout = new()
         {
             Spacing = 10,
             Padding = new Thickness(15, 0, 0, 0)
         };
 
-        Label songNameLabel = new Label { Text = Title, HorizontalOptions = LayoutOptions.Center };
-        Label artistLabel = new Label { Text = Artist, HorizontalOptions = LayoutOptions.Center };
-        Label albumLabel = new Label { Text = Album, HorizontalOptions = LayoutOptions.Center };
+        Label songNameLabel = new() { Text = Title, HorizontalOptions = LayoutOptions.Center };
+        Label artistLabel = new() { Text = Artist, HorizontalOptions = LayoutOptions.Center };
+        Label albumLabel = new() { Text = Album, HorizontalOptions = LayoutOptions.Center };
 
         labelStackLayout.Children.Add(songNameLabel);
         labelStackLayout.Children.Add(artistLabel);
@@ -80,9 +77,9 @@ public partial class TempLiabrary : ContentPage
             Padding = new Thickness(15, 0, 0, 0)
         };
 
-        Button button1 = new Button { Text = "▶️", BackgroundColor = Color.FromHex("#2db36d"), AutomationId = ID };
-        Button button2 = new Button { Text = "💾", BackgroundColor = Color.FromHex("#2db36d"), AutomationId = ID };
-        Button button3 = new Button { Text = "❌", BackgroundColor = Color.FromHex("#2db36d"), AutomationId = ID };
+        Button button1 = new() { Text = "▶️", BackgroundColor = Color.FromArgb("#2db36d"), AutomationId = ID };
+        Button button2 = new() { Text = "💾", BackgroundColor = Color.FromArgb("#2db36d"), AutomationId = ID };
+        Button button3 = new() { Text = "❌", BackgroundColor = Color.FromArgb("#2db36d"), AutomationId = ID };
 
         button1.Clicked += (s, e) =>
         {

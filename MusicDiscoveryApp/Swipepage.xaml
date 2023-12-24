@@ -18,6 +18,8 @@
             </SwipeItems>
         </SwipeView.RightItems>
 
+        <ScrollView>
+            
         <VerticalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
@@ -82,5 +84,8 @@
                 <Button Text="♡" Clicked="OnLikeButtonClicked" BackgroundColor="Green" TextColor="White" FontFamily="FontAwesome" FontSize="36" CornerRadius="50" WidthRequest="100" HeightRequest="100"/>
             </StackLayout>
         </VerticalStackLayout>
+
+        </ScrollView>
+
     </SwipeView>
 </ContentPage>

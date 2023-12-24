@@ -8,9 +8,6 @@ public partial class SettingsPage : ContentPage
 	public SettingsPage()
 	{
 		InitializeComponent();
-
-        Shell.SetTabBarIsVisible(this, false);
-
     }
 
 
@@ -36,14 +33,8 @@ public partial class SettingsPage : ContentPage
 
         if (action == "Yes")
         {
-=
             UserStorage.Clear();
             await Navigation.PushAsync(new Login());
-        }
-        else
-        {
-            return;
-
         }
     }
 
@@ -56,13 +47,8 @@ public partial class SettingsPage : ContentPage
       
         if (action == "Yes")
         {
-
-            //Hier in dan zou de actie om de account te verwijderen moeten gebeuren. 
-
-            string usernameToRemove = UserStorage.storedUsername; 
-
             // Call the method to remove the account from the database
-            await RemoveUserAsync(usernameToRemove);
+            await RemoveUserAsync(UserStorage.storedUsername);
 
             await DisplayAlert("Success", "Account removed successfully.", "OK");
 

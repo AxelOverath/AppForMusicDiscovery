@@ -7,7 +7,6 @@ global using MusicDiscoveryApp.Views;
 global using CommunityToolkit.Maui;
 global using TinyMvvm;
 
-global using CommunityToolkit;
 global using CommunityToolkit.Mvvm.Input;
 global using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -16,8 +15,6 @@ global using System;
 global using System.Net;
 global using System.Text;
 global using System.Text.Json;
-global using System.Windows.Input;
-global using System.Collections.ObjectModel;
 global using MusicDiscoveryApp.Services;
 
 

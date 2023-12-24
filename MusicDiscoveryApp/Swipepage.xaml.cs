@@ -1,5 +1,3 @@
-using CommunityToolkit.Maui.Views;
-
 namespace MusicDiscoveryApp;
 
 public partial class Swipepage : ContentPage
@@ -8,7 +6,6 @@ public partial class Swipepage : ContentPage
     public Swipepage()
     {
         InitializeComponent();
-        
     }
 
     private void OnButtonPressed(object sender, EventArgs e)
@@ -31,28 +28,30 @@ public partial class Swipepage : ContentPage
         DisplayAlert("Random Clicked", "You clicked the 'Random' button!", "OK");
     }
 
-    private async void OnLikeButtonClicked(object sender, EventArgs e)
+    private void OnLikeButtonClicked(object sender, EventArgs e)
     {
         SaveLikedSong();
         GetNewSong();
     }
 
-    private async void OnDislikeButtonClicked(object sender, EventArgs e)
+    private void OnDislikeButtonClicked(object sender, EventArgs e)
     {
         GetNewSong();
     }
 
-    private async void OnSwipeChanging(object sender, SwipeChangingEventArgs e)
+    private void OnSwipeChanging(object sender, SwipeChangingEventArgs e)
     {
         if (e.Offset > 0)
         {
             //Like
+
             SaveLikedSong();
             GetNewSong();
         }
         else if (e.Offset < 0)
         {
             //Dislike
+
             GetNewSong();
         }
         swipeView.Close();
@@ -69,8 +68,7 @@ public partial class Swipepage : ContentPage
     private void SaveLikedSong()
     {
         //Sent id from song and username of client
-        //The id is in CurrentSongID
-        CurrentSongID = CurrentSongID;
+        //CurrentSongID;
     }
 
     private async void GetNewSong()
@@ -98,7 +96,7 @@ public partial class Swipepage : ContentPage
         CurrentSongID = selectedTrack?.Id;
 
         // Set the MediaElement source only if the track has a preview
-        if (!string.IsNullOrEmpty(selectedTrack.PreviewUrl))
+        if (!string.IsNullOrWhiteSpace(selectedTrack.PreviewUrl))
         {
             mediaElement.Source = selectedTrack.PreviewUrl;
         }

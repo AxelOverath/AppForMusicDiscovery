@@ -55,8 +55,8 @@ namespace MusicDiscoveryApp
                 .Set(u => u.LastName, lastName)
                 .Set(u => u.Username, username)
                 .Set(u => u.DateOfBirth, dateOfBirth)
-                .Set(u => u.Friends, new List<string>())
-                .Set(u => u.FriendRequests, new List<string>());
+                .Set(u => u.Friends, [])
+                .Set(u => u.FriendRequests, []);
 
             await Database.UsersCollection.UpdateOneAsync(filter, update);
             UserStorage.storedUsername = username;

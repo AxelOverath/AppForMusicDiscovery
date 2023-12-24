@@ -84,7 +84,7 @@ public partial class FriendRequests : ContentPage
                 // Add the friend to the current user's friend list
                 if (currentUser.Friends == null)
                 {
-                    currentUser.Friends = new List<string>();
+                    currentUser.Friends = [];
                 }
                 currentUser.Friends.Add(friendUsername);
 
@@ -103,7 +103,7 @@ public partial class FriendRequests : ContentPage
                 {
                     if (senderUser.Friends == null)
                     {
-                        senderUser.Friends = new List<string>();
+                        senderUser.Friends = [];
                     }
                     senderUser.Friends.Add(currentUserUsername);
 

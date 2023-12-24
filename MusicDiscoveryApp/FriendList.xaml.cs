@@ -31,7 +31,7 @@ public partial class FriendList : ContentPage
 
     private Frame CreateFriendFrame(string friend)
     {
-        Frame frame = new Frame
+        Frame frame = new()
         {
             BackgroundColor = Colors.LightGray,
             Margin = new Thickness(5, 5, 5, 5),
@@ -41,14 +41,14 @@ public partial class FriendList : ContentPage
             HeightRequest = 80
         };
 
-        Label nameLabel = new Label
+        Label nameLabel = new()
         {
             Text = friend,
             HorizontalOptions = LayoutOptions.CenterAndExpand,
             VerticalOptions = LayoutOptions.CenterAndExpand
         };
 
-        Image shareImage = new Image
+        Image shareImage = new()
         {
             Source = "share.svg",
             HorizontalOptions = LayoutOptions.End,
@@ -56,7 +56,7 @@ public partial class FriendList : ContentPage
             Margin = new Thickness(0, 0, 30, 0)
         };
 
-        TapGestureRecognizer shareTap = new TapGestureRecognizer();
+        TapGestureRecognizer shareTap = new();
         shareTap.Tapped += async (sender, e) =>
         {
             await DisplayAlert("DEBUG", friend, "OK");

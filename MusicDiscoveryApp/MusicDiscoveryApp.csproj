@@ -108,9 +108,6 @@
 
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="SpotifyAPI.Web.Auth" Version="7.0.2" />
-	</ItemGroup>
-	<ItemGroup>
 	  <Compile Update="FriendAdd.xaml.cs">
 	    <DependentUpon>FriendAdd.xaml</DependentUpon>
 	  </Compile>

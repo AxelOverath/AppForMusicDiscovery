@@ -39,7 +39,7 @@ namespace MusicDiscoveryApp
                 Padding = new Thickness(10),
                 WidthRequest = 210,
                 HeightRequest = 320,
-                BackgroundColor = Color.FromHex("#2db36d")
+                BackgroundColor = Color.FromArgb("#2db36d")
             };
 
             var coverImage = new Image
@@ -70,9 +70,9 @@ namespace MusicDiscoveryApp
                 Padding = new Thickness(15, 0, 0, 0)
             };
 
-            var playButton = new Button { Text = "▶️", BackgroundColor = Color.FromHex("#2db36d"), AutomationId = ID };
-            var saveButton = new Button { Text = "💾", BackgroundColor = Color.FromHex("#2db36d"), AutomationId = ID };
-            var deleteButton = new Button { Text = "❌", BackgroundColor = Color.FromHex("#2db36d"), AutomationId = ID };
+            var playButton = new Button { Text = "▶️", BackgroundColor = Color.FromArgb("#2db36d"), AutomationId = ID };
+            var saveButton = new Button { Text = "💾", BackgroundColor = Color.FromArgb("#2db36d"), AutomationId = ID };
+            var deleteButton = new Button { Text = "❌", BackgroundColor = Color.FromArgb("#2db36d"), AutomationId = ID };
 
             playButton.Clicked += (s, e) =>
             {

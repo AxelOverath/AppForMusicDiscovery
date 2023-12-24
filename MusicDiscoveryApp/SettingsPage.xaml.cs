@@ -35,6 +35,7 @@ public partial class SettingsPage : ContentPage
         {
             UserStorage.Clear();
             await Navigation.PushAsync(new Login());
+            await Navigation.PopToRootAsync();
         }
     }
 
@@ -42,8 +43,6 @@ public partial class SettingsPage : ContentPage
     async void RemoveAccount(object sender, EventArgs e)
     {
         string action = await DisplayActionSheet("Do you want to remove you account?", "No", "Yes");
-        Debug.WriteLine(action);
-
       
         if (action == "Yes")
         {

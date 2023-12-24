@@ -73,6 +73,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+
 		<None Remove="Resources\Images\about_us.png" />
 		<None Remove="Resources\Images\accept.svg" />
 		<None Remove="Resources\Images\add.svg" />
@@ -87,6 +88,7 @@
 		<None Remove="Resources\Images\share.svg" />
 		<None Remove="Resources\Images\team.png" />
 		<None Remove="Resources\Images\user.png" />
+
 	</ItemGroup>
 
 	<ItemGroup>
@@ -155,7 +157,6 @@
 	  <MauiXaml Update="Views\LoginView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-
 	</ItemGroup>
 
 </Project>

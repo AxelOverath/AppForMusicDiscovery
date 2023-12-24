@@ -2,7 +2,7 @@ namespace MusicDiscoveryApp;
 
 public partial class ForgetPassword : ContentPage
 {
-	private string userEmail;
+	private string userEmail = "";
 	public ForgetPassword()
 	{
 		InitializeComponent();

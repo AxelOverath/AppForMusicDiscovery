@@ -7,6 +7,12 @@ namespace MusicDiscoveryApp
         public TempLiabrary()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SongsContainer.Children.Clear();
             PopulateLibrary();
         }
 
@@ -14,8 +20,9 @@ namespace MusicDiscoveryApp
         {
             var currentUserUsername = UserStorage.storedUsername;
             var currentUser = await GetUserByUsername(currentUserUsername);
-
-            foreach (var song in currentUser.LikedSongs)
+            var reversedLikedSongs = currentUser.LikedSongs.ToList();
+            reversedLikedSongs.Reverse();
+            foreach (var song in reversedLikedSongs)
             {
                 var songDetails = await ApiCalls.GetSongDetails(song);
                 if (songDetails != null)
@@ -76,17 +83,17 @@ namespace MusicDiscoveryApp
 
             playButton.Clicked += (s, e) =>
             {
-                // Play or pause logic
+                DisplayAlert("PLAY", "Button to play a song", "OK");
             };
 
             saveButton.Clicked += (s, e) =>
             {
-                // Save logic
+                DisplayAlert("SAVE", "Button to save song to your Spotify playlist", "OK");
             };
 
             deleteButton.Clicked += (s, e) =>
             {
-                // Delete logic
+                DisplayAlert("DELETE", "Button to delete this song from the library and from the database", "OK");
             };
 
             buttonStackLayout.Children.Add(playButton);

@@ -35,7 +35,6 @@ public partial class SettingsPage : ContentPage
         {
             UserStorage.Clear();
             await Navigation.PushAsync(new Login());
-            await Navigation.PopToRootAsync();
         }
     }
 

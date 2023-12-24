@@ -55,7 +55,7 @@
 
                     <toolkit:MediaElement x:Name="mediaElement" WidthRequest="400" HeightRequest="300" IsVisible="False" ShouldAutoPlay="True" Source=""/>
 
-                    <Label x:Name="SongName" Text="Erop Of Eronder" TextColor="#236738" FontAttributes="Bold" HorizontalOptions="End" Margin="15,5,15,0" FontSize="25"/>
+                    <Label x:Name="SongName" Text="Erop Of Eronder" TextColor="#236738" FontAttributes="Bold"  Margin="15,5,15,0" FontSize="25"/>
                     <Label x:Name="ArtistName" Text="Pommelien Thijs" TextColor="#236738" FontAttributes="Bold" Margin="15,5,15,0" FontSize="25"/>
                     <Label x:Name="AlbumName" Text="Per Ongeluk" TextColor="#236738" FontAttributes="Bold" Margin="15,10,5,0" FontSize="25"/>
 

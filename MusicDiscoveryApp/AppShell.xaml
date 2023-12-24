@@ -13,7 +13,7 @@
                   ContentTemplate="{DataTemplate local:Swipepage}" 
                   Route="Swipepage"/>
         <ShellContent Icon="book.png" 
-                      ContentTemplate="{DataTemplate local:Swipepage}"/> <!--TempLibrary-->
+                      ContentTemplate="{DataTemplate local:TempLiabrary}"/> <!--TempLibrary-->
         <ShellContent Icon="friends.png"
                       ContentTemplate="{DataTemplate local:FriendList}"/>
         <ShellContent Icon="settings.png"

@@ -215,12 +215,11 @@ namespace MusicDiscoveryApp
             }
         }
 
-        public static async Task<List<ApiCalls.Track>> GetSongDetails(List<string> songIds)
+        public static async Task<TrackDetails> GetSongDetails(string songId)
         {
-            
-            string apiUrl = $"https://api.spotify.com/v1/tracks?ids={string.Join(",", songIds)}";
+            string apiUrl = $"https://api.spotify.com/v1/tracks/{songId}";
 
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new())
             {
                 client.DefaultRequestHeaders.Add("Authorization", $"Bearer {UserStorage.accessToken}");
 
@@ -231,9 +230,18 @@ namespace MusicDiscoveryApp
                     string jsonContent = await response.Content.ReadAsStringAsync();
 
                     // Use Newtonsoft.Json.JsonConvert to deserialize the JSON string
-                    List<ApiCalls.Track> tracks = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ApiCalls.Track>>(jsonContent);
+                    Track track = JsonConvert.DeserializeObject<Track>(jsonContent);
 
-                    return tracks;
+                    // Extract required details from the track
+                    TrackDetails details = new TrackDetails
+                    {
+                        CoverUrl = track?.Album?.Images?.FirstOrDefault()?.Url,
+                        Title = track?.Name,
+                        Artist = track?.Artists?.FirstOrDefault()?.Name,
+                        Album = track?.Album?.Name
+                    };
+
+                    return details;
                 }
                 else
                 {
@@ -241,11 +249,18 @@ namespace MusicDiscoveryApp
                     string errorResponse = await response.Content.ReadAsStringAsync();
                     Console.WriteLine($"Error Response: {errorResponse}");
 
-                    return new List<ApiCalls.Track>();
+                    return null;
                 }
             }
         }
 
+        public class TrackDetails
+        {
+            public string CoverUrl { get; set; }
+            public string Title { get; set; }
+            public string Artist { get; set; }
+            public string Album { get; set; }
+        }
 
     }
 }
